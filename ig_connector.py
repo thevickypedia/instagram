@@ -32,9 +32,37 @@ def instagram():
             file.close()
         subprocess.call(["open", filename])
 
+    def post_info(tagged=False):
+        if tagged:
+            posts = profile.get_tagged_posts()
+        else:
+            posts = profile.get_posts()
+        for post in posts:
+            profile = post.profile
+            location = post.location
+            url = post.url
+            title = post.title
+            caption = post.caption
+            hashtags = post.caption_hashtags
+            mentions = post.caption_mentions
+            comments = post.comments
+            date_local = post.date_local
+            likes = post.likes
+            tagged_users = post.tagged_users
+            print(profile, location, title, caption, hashtags, mentions, comments, likes, tagged_users)
+
+            response = requests.get(url, stream=True)
+            response.raw.decode_content = True
+            filename = f'{str(date_local).replace(" ", "_")}'
+            with open(filename, 'wb') as file:
+                shutil.copyfileobj(response.raw, file)
+                file.close()
+            subprocess.call(["open", filename])
+
     followees()
     followers()
     dp('vignesh.vikky')
+    post_info(tagged=True)
 
 
 instagram()
