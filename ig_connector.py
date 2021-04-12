@@ -49,11 +49,19 @@ def instagram():
             date_local = post.date_local
             likes = post.likes
             tagged_users = post.tagged_users
+            extension = '.jpg'
             print(profile, location, title, caption, hashtags, mentions, comments, likes, tagged_users)
+
+            if post.is_video:
+                extension = '.mp4'
+                view_count = post.video_view_count
+                url = post.video_url
+                video_duration = post.video_duration
+                print(view_count, video_duration)
 
             response = requests.get(url, stream=True)
             response.raw.decode_content = True
-            filename = f'{str(date_local).replace(" ", "_")}'
+            filename = f'{str(date_local).replace(" ", "_") + extension}'
             with open(filename, 'wb') as file:
                 shutil.copyfileobj(response.raw, file)
                 file.close()
