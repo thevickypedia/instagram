@@ -8,6 +8,7 @@ from requests import get
 
 class Instagram:
     def __init__(self):
+        """Initiates IG client. Checks for username and password in env vars."""
         self.client = Instaloader()
         insta_user, insta_pass = environ.get('insta_user'), environ.get('insta_pass')
         if not (insta_user or insta_pass):
@@ -18,6 +19,7 @@ class Instagram:
         self.profile = Profile.from_username(self.client.context, insta_user)
 
     def dp(self, target_profile):
+        """Gets display picture of a particular profile and saves it locally. Also asks for deletion post preview."""
         profile = Profile.from_username(self.client.context, target_profile)  # use target user here to download the dp
         filename = f'{target_profile}.jpg'
         response = get(profile.get_profile_pic_url(), stream=True)
@@ -32,16 +34,24 @@ class Instagram:
             print('Profile picture has been deleted.')
 
     def followers(self):
+        """Gets followers' username and bio."""
         for follower in self.profile.get_followers():
             username = follower.username
-            print(username)
+            bio = follower.biography
+            print(f'Username: {username}') if username else None
+            print(f'Bio: {bio}') if bio else None
 
     def followees(self):
+        """Gets followees' username and bio."""
         for followee in self.profile.get_followees():
             username = followee.username
-            print(username)
+            bio = followee.biography
+            print(f'Username: {username}') if username else None
+            print(f'Bio: {bio}') if bio else None
 
     def post_info(self, tagged=False):
+        """Gets self post information when 'tagged' flag is not used.
+        Gets tagged posts' information when 'tagged' is set to True"""
         if tagged:
             posts = self.profile.get_tagged_posts()
         else:
@@ -90,6 +100,7 @@ class Instagram:
 
 
 if __name__ == '__main__':
-    Instagram().dp(target_profile='vignesh.vikky')
-    Instagram().post_info(tagged=False)
-    Instagram().post_info(tagged=True)
+    ig = Instagram()
+    ig.dp(target_profile='vignesh.vikky')
+    ig.post_info()
+    ig.post_info(tagged=True)
