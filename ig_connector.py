@@ -4,6 +4,7 @@ def instagram():
     import requests
     import shutil
     import subprocess
+    from concurrent.futures import ThreadPoolExecutor
     client = Instaloader()
     insta_user, insta_pass = os.getenv('insta_user'), os.getenv('insta_pass')
     if not (insta_user or insta_pass):
@@ -12,10 +13,9 @@ def instagram():
     client.login(insta_user, insta_pass)
     profile = Profile.from_username(client.context, insta_user)
 
-    def followers():
-        for follower in profile.get_followers():
-            username = follower.username
-            print(username)
+    def followers(follower):
+        username = follower.username
+        print(username)
 
     def followees():
         for follower in profile.get_followees():
@@ -32,45 +32,30 @@ def instagram():
             file.close()
         subprocess.call(["open", filename])
 
-    def post_info(tagged=False):
-        if tagged:
-            posts = profile.get_tagged_posts()
-        else:
-            posts = profile.get_posts()
-        for post in posts:
-            profile = post.profile
-            location = post.location
-            url = post.url
-            title = post.title
-            caption = post.caption
-            hashtags = post.caption_hashtags
-            mentions = post.caption_mentions
-            comments = post.comments
-            date_local = post.date_local
-            likes = post.likes
-            tagged_users = post.tagged_users
-            extension = '.jpg'
-            print(profile, location, title, caption, hashtags, mentions, comments, likes, tagged_users)
+    def temp():
+        post = profile.get_tagged_posts()
+        with ThreadPoolExecutor(max_workers=10) as executor:
+            executor.map(tagged_posts, post)
 
-            if post.is_video:
-                extension = '.mp4'
-                view_count = post.video_view_count
-                url = post.video_url
-                video_duration = post.video_duration
-                print(view_count, video_duration)
+    def tagged_posts(post):
+        profile = post.profile
+        location = post.location
+        title = post.title
+        caption = post.caption
+        hashtags = post.caption_hashtags
+        mentions = post.caption_mentions
+        comments = post.comments
+        date_local = post.date_local
+        likes = post.likes
+        tagged_users = post.tagged_users
+        print(profile, location, title, caption, hashtags, mentions, comments, likes, tagged_users, date_local)
 
-            response = requests.get(url, stream=True)
-            response.raw.decode_content = True
-            filename = f'{str(date_local).replace(" ", "_") + extension}'
-            with open(filename, 'wb') as file:
-                shutil.copyfileobj(response.raw, file)
-                file.close()
-            subprocess.call(["open", filename])
+        if post.is_video:
+            view_count = post.video_view_count
+            video_duration = post.video_duration
+            print(view_count, video_duration)
 
-    followees()
-    followers()
-    dp('vignesh.vikky')
-    post_info(tagged=True)
+    temp()
 
 
 instagram()
