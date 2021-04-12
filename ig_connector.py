@@ -1,3 +1,4 @@
+from concurrent.futures import ThreadPoolExecutor
 from os import environ, remove
 from shutil import copyfileobj
 from subprocess import call
@@ -98,9 +99,44 @@ class Instagram:
             print(f'Location: {location}') if location else None
             print('\n')
 
+    @staticmethod
+    def followers_thread(follower):
+        """Takes follower's profile data as input and prints their username and bio."""
+        username = follower.username
+        bio = str(follower.biography).replace('\n', '\t')
+        if username and bio:
+            print(f'Username: {username}\tBio: {bio}')
+        else:
+            print(f'Username: {username}')
+
+    def followers_threaded(self):
+        """Initiates followers_thread() in a multi-threaded execution.
+        Set max_workers to 5 as anything exceeding 10 will block the origin IP range for 10 minutes"""
+        follower = self.profile.get_followers()
+        with ThreadPoolExecutor(max_workers=5) as executor:
+            executor.map(ig.followers_thread, follower)
+
+    @staticmethod
+    def following_thread(followee):
+        """Takes following people's profile data as input and prints their username and bio."""
+        username = followee.username
+        bio = str(followee.biography).replace('\n', '\t')
+        if username and bio:
+            print(f'Username: {username}\tBio: {bio}')
+        else:
+            print(f'Username: {username}')
+
+    def following_threaded(self):
+        """Initiates following_thread() in a multi-threaded execution.
+        Set max_workers to 5 as anything exceeding 10 will block the origin IP range for 10 minutes"""
+        followee = self.profile.get_followees()
+        with ThreadPoolExecutor(max_workers=5) as executor:
+            executor.map(ig.following_thread, followee)
+
 
 if __name__ == '__main__':
     ig = Instagram()
-    ig.dp(target_profile='vignesh.vikky')
+    ig.followers_threaded()
+    ig.following_threaded()
     ig.post_info()
     ig.post_info(tagged=True)
