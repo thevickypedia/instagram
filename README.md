@@ -1,2 +1,2 @@
-# instagram
-Do some cool stuff with your IG
+# Instagram
+Do some cool stuff with your IG using python.
