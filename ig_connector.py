@@ -87,9 +87,12 @@ class Instagram:
                 file.close()
             call(["open", filename])
 
+            print(f'Profile: {profile}') if profile else None
+            if tagged:
+                username = post.owner_username
+                print(f'Username: {username}') if username else None
             print(f'Title: {title}') if title else None
             print(f'Caption: {caption}') if caption else None
-            print(f'Profile: {profile}') if profile else None
             print(f'Likes: {likes}') if likes else None
             print(f'Comments: {comments}') if comments else None
             print(f'Tagged: {", ".join(tagged_users)}') if tagged_users else None
