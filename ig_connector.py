@@ -115,9 +115,8 @@ class Instagram:
     def followers_threaded(self):
         """Initiates followers_thread() in a multi-threaded execution.
         Set max_workers to 5 as anything exceeding 10 will block the origin IP range for 10 minutes"""
-        follower = self.profile.get_followers()
         with ThreadPoolExecutor(max_workers=5) as executor:
-            executor.map(ig.followers_thread, follower)
+            executor.map(ig.followers_thread, self.profile.get_followers())
 
     @staticmethod
     def following_thread(followee):
@@ -132,9 +131,20 @@ class Instagram:
     def following_threaded(self):
         """Initiates following_thread() in a multi-threaded execution.
         Set max_workers to 5 as anything exceeding 10 will block the origin IP range for 10 minutes"""
-        followee = self.profile.get_followees()
         with ThreadPoolExecutor(max_workers=5) as executor:
-            executor.map(ig.following_thread, followee)
+            executor.map(ig.following_thread, self.profile.get_followees())
+
+    def ungrateful(self):
+        """Prints who doesn't follow you back and who you don't follow back."""
+        followers = [follower.username for follower in self.profile.get_followers()]
+        followees = [followee.username for followee in self.profile.get_followees()]
+        ug_them = [followee for followee in followees if followee not in followers]
+        print(f'Ungrateful Them: {len(ug_them)}')
+        print(sorted(ug_them))
+
+        ug_me = [follower for follower in followers if follower not in followees]
+        print(f'\n\nUngrateful Me: {len(ug_me)}')
+        print(sorted(ug_me))
 
 
 if __name__ == '__main__':
@@ -143,3 +153,4 @@ if __name__ == '__main__':
     ig.following_threaded()
     ig.post_info()
     ig.post_info(tagged=True)
+    ig.ungrateful()
