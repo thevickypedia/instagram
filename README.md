@@ -12,6 +12,8 @@ export insta_pass=<password>
 #### Commit:
 `pre-commit run --all-files` - This will ensure linting and generates docs from docstrings.
 
+Page hosted at https://thevickypedia.github.io/instagram/
+
 <!--
 ## Replicate auto generation of pages
 `pip3 install sphinx`<br>
