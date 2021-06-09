@@ -1,2 +1,4 @@
 instaloader==4.7.1
 requests==2.25.1
+pre_commit==2.13.0
+click==8.0.1

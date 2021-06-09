@@ -1,0 +1,26 @@
+repos:
+  -
+    repo: https://gitlab.com/pycqa/flake8
+    rev: ''
+    hooks:
+      -
+        id: flake8
+        additional_dependencies:
+          - flake8-docstrings
+          - flake8-sfs
+        args: [--max-line-length=120, --extend-ignore=SFS3 D107 SFS301 D100 D104]
+
+  -
+    repo: https://github.com/pre-commit/mirrors-isort
+    rev: ''
+    hooks:
+      -
+        id: isort
+  - repo: local
+    hooks:
+      - id: build_docs
+        name: build html
+        entry: /bin/bash docs/gen_docs.sh
+        language: system
+        pass_filenames: false
+        always_run: true
