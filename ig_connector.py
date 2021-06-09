@@ -9,17 +9,16 @@ from requests import get
 
 
 class Instagram:
-    """Instagram class to initiate the client."""
-
-    def __init__(self, insta_user: str = None, insta_pass: str = None):
-        """Initiates IG client. Checks for username and password in env vars.
+    """Initiates IG client. Takes username and password as arguments for authentication.
 
         >>> Instagram()
 
-        Args:
-            insta_user: Username for the authentication instagram account.
-            insta_pass: Password for the authentication instagram account.
-        """
+    Args:
+        insta_user: Username for the authentication instagram account.
+        insta_pass: Password for the authentication instagram account.
+    """
+
+    def __init__(self, insta_user: str, insta_pass: str):
         self.client = Instaloader()
         if not (insta_user and insta_pass):
             exit("Store your Instagram login credentials as env vars.\n"

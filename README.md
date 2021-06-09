@@ -41,6 +41,11 @@ extensions = [
     'sphinx.ext.autodoc'  # generates from doc strings
 ]
 ```
+- HTML theme output
+```
+# https://www.sphinx-doc.org/en/master/usage/theming.html#builtin-themes
+html_theme = 'agogo'
+```
 
 <details>
 <sumary>gen_docs.sh</sumary>
