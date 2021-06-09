@@ -20,7 +20,7 @@ repos:
     hooks:
       - id: build_docs
         name: build html
-        entry: /bin/bash docs/gen_docs.sh
+        entry: /bin/bash doc_generator/gen_docs.sh
         language: system
         pass_filenames: false
         always_run: true
