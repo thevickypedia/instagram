@@ -2,16 +2,33 @@
 Python script to retrieve data from Instagram
 
 ## Usage
-#### Env Variables:
+### Env Variables:
 ```
 export insta_user=<username>
 export insta_pass=<password>
 ```
-#### Setup:
+### Setup
 `pip3 install -r requirements.txt`
-#### Commit:
+
+### CLI
+`python3 cli.py --help` - Help information.
+
+`python3 cli.py dp --target-profile <username>`
+<br>
+`python3 cli.py dp` - Will prompt to provide username.
+
+`python3 cli.py followers` - Prints followers' username and bio.
+
+`python3 cli.py followees` - Prints followees' username and bio.
+
+`python3 cli.py ungrateful --them=True` - Prints who don't follow you back.
+<br>
+`python3 cli.py ungrateful --me=True` - Prints who you don't follow back.
+
+### Commit
 `pre-commit run --all-files` - This will ensure linting and generates docs from docstrings.
 
+### Runbook
 Page hosted at https://thevickypedia.github.io/instagram/
 
 <!--
