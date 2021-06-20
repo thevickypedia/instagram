@@ -2,7 +2,6 @@ from concurrent.futures import ThreadPoolExecutor
 from os import environ, remove
 from shutil import copyfileobj
 from subprocess import call
-from sys import exit
 
 from instaloader import Instaloader, Profile
 from requests import get
@@ -18,11 +17,13 @@ class Instagram:
         insta_pass: Password for the authentication instagram account.
     """
 
-    def __init__(self, insta_user: str, insta_pass: str):
-        self.client = Instaloader()
+    def __init__(self, insta_user: str = None, insta_pass: str = None):
+        insta_user = insta_user or environ.get('insta_user')
+        insta_pass = insta_pass or environ.get('insta_pass')
         if not (insta_user and insta_pass):
             exit("Store your Instagram login credentials as env vars.\n"
                  "insta_user=<username>\ninsta_pass=<password>")
+        self.client = Instaloader()
         self.client.login(insta_user, insta_pass)
         self.profile = Profile.from_username(self.client.context, insta_user)
 
@@ -185,5 +186,4 @@ class Instagram:
 
 
 if __name__ == '__main__':
-    ig = Instagram(insta_user=environ.get('insta_user'), insta_pass=environ.get('insta_pass'))
-    ig.ungrateful()
+    Instagram().ungrateful()
