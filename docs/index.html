@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Welcome to Instagram Connector’s documentation! &#8212; Instagram Connector  documentation</title>
+    <title>Welcome to Instagram Client’s documentation! &#8212; instagram  documentation</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="_static/agogo.css" />
     <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
@@ -19,7 +19,7 @@
     <div class="header-wrapper" role="banner">
       <div class="header">
         <div class="headertitle"><a
-          href="#">Instagram Connector  documentation</a></div>
+          href="#">instagram  documentation</a></div>
         <div class="rel" role="navigation" aria-label="related navigation">
           <a href="py-modindex.html" title="Python Module Index"
              >modules</a> |
@@ -37,8 +37,8 @@
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <section id="welcome-to-instagram-connector-s-documentation">
-<h1>Welcome to Instagram Connector’s documentation!<a class="headerlink" href="#welcome-to-instagram-connector-s-documentation" title="Permalink to this headline">¶</a></h1>
+  <section id="welcome-to-instagram-client-s-documentation">
+<h1>Welcome to Instagram Client’s documentation!<a class="headerlink" href="#welcome-to-instagram-client-s-documentation" title="Permalink to this headline">¶</a></h1>
 <div class="toctree-wrapper compound">
 </div>
 <span class="target" id="module-instagram.ig_connector"></span><dl class="py class">
@@ -65,21 +65,18 @@
 <dd class="field-odd"><p><strong>target_profile</strong> – User id of the profile for which the display picture has to be downloaded.</p>
 </dd>
 </dl>
-<p>Returns: None</p>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="instagram.ig_connector.Instagram.followees">
 <span class="sig-name descname"><span class="pre">followees</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#instagram.ig_connector.Instagram.followees" title="Permalink to this definition">¶</a></dt>
-<dd><p>Gets followees’ username and bio.</p>
-<p>Returns: None</p>
+<dd><p>Prints followees’ username and bio.</p>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="instagram.ig_connector.Instagram.followers">
 <span class="sig-name descname"><span class="pre">followers</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#instagram.ig_connector.Instagram.followers" title="Permalink to this definition">¶</a></dt>
 <dd><p>Prints followers’ username and bio.</p>
-<p>Returns: None</p>
 </dd></dl>
 
 <dl class="py method">
@@ -91,7 +88,6 @@
 <dd class="field-odd"><p><strong>follower</strong> – Takes follower profile data as argument.</p>
 </dd>
 </dl>
-<p>Returns: None</p>
 </dd></dl>
 
 <dl class="py method">
@@ -100,7 +96,6 @@
 <dd><p>Get followers’ information concurrently.</p>
 <p>Initiates Instagram().followers_thread() in a multi-threaded execution.
 Set max_workers to 5 as anything exceeding 10 will block the origin IP range for 10 minutes.</p>
-<p>Returns: None</p>
 </dd></dl>
 
 <dl class="py method">
@@ -112,7 +107,6 @@ Set max_workers to 5 as anything exceeding 10 will block the origin IP range for
 <dd class="field-odd"><p><strong>followee</strong> – Take followee profile data as argument.</p>
 </dd>
 </dl>
-<p>Returns: None</p>
 </dd></dl>
 
 <dl class="py method">
@@ -121,7 +115,6 @@ Set max_workers to 5 as anything exceeding 10 will block the origin IP range for
 <dd><p>Get followees’ information concurrently.</p>
 <p>Initiates Instagram().following_thread() in a multi-threaded execution.
 Set max_workers to 5 as anything exceeding 10 will block the origin IP range for 10 minutes.</p>
-<p>Returns: None</p>
 </dd></dl>
 
 <dl class="py method">
@@ -135,14 +128,12 @@ Gets self post information when ‘tagged’ flag is not used</p>
 <dd class="field-odd"><p><strong>tagged</strong> – Takes boolean value as argument. Set to False by default.</p>
 </dd>
 </dl>
-<p>Returns: None</p>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="instagram.ig_connector.Instagram.ungrateful">
 <span class="sig-name descname"><span class="pre">ungrateful</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#instagram.ig_connector.Instagram.ungrateful" title="Permalink to this definition">¶</a></dt>
 <dd><p>Prints who doesn’t follow you back and who you don’t follow back.</p>
-<p>Returns: None</p>
 </dd></dl>
 
 </dd></dl>

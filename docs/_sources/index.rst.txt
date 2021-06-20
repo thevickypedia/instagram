@@ -1,10 +1,10 @@
-.. Instagram Connector documentation master file, created by
-   sphinx-quickstart on Wed Jun  9 17:45:04 2021.
+.. instagram documentation master file, created by
+   sphinx-quickstart on Tue Jun  8 16:26:09 2021.
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-Welcome to Instagram Connector's documentation!
-===============================================
+Welcome to Instagram Client's documentation!
+============================================
 
 .. toctree::
    :maxdepth: 2

@@ -32,8 +32,6 @@ class Instagram:
         Args:
             target_profile: User id of the profile for which the display picture has to be downloaded.
 
-        Returns: None
-
         """
         profile = Profile.from_username(self.client.context, target_profile)  # use target user here to download the dp
         filename = f'{target_profile}.jpg'
@@ -49,11 +47,7 @@ class Instagram:
             print('Profile picture has been deleted.')
 
     def followers(self):
-        """Prints followers' username and bio.
-
-        Returns: None
-
-        """
+        """Prints followers' username and bio."""
         for follower in self.profile.get_followers():
             username = follower.username
             bio = follower.biography
@@ -61,11 +55,7 @@ class Instagram:
             print(f'Bio: {bio}') if bio else None
 
     def followees(self):
-        """Gets followees' username and bio.
-
-        Returns: None
-
-        """
+        """Prints followees' username and bio."""
         for followee in self.profile.get_followees():
             username = followee.username
             bio = followee.biography
@@ -80,8 +70,6 @@ class Instagram:
 
         Args:
             tagged: Takes boolean value as argument. Set to False by default.
-
-        Returns: None
 
         """
         if tagged:
@@ -140,8 +128,6 @@ class Instagram:
         Args:
             follower: Takes follower profile data as argument.
 
-        Returns: None
-
         """
         username = follower.username
         bio = str(follower.biography).replace('\n', '\t')
@@ -156,8 +142,6 @@ class Instagram:
         Initiates Instagram().followers_thread() in a multi-threaded execution.
         Set max_workers to 5 as anything exceeding 10 will block the origin IP range for 10 minutes.
 
-        Returns: None
-
         """
         with ThreadPoolExecutor(max_workers=5) as executor:
             executor.map(self.followers_thread, self.profile.get_followers())
@@ -168,8 +152,6 @@ class Instagram:
 
         Args:
             followee: Take followee profile data as argument.
-
-        Returns: None
 
         """
         username = followee.username
@@ -185,18 +167,12 @@ class Instagram:
         Initiates Instagram().following_thread() in a multi-threaded execution.
         Set max_workers to 5 as anything exceeding 10 will block the origin IP range for 10 minutes.
 
-        Returns: None
-
         """
         with ThreadPoolExecutor(max_workers=5) as executor:
             executor.map(self.following_thread, self.profile.get_followees())
 
     def ungrateful(self):
-        """Prints who doesn't follow you back and who you don't follow back.
-
-        Returns: None
-
-        """
+        """Prints who doesn't follow you back and who you don't follow back."""
         followers = [follower.username for follower in self.profile.get_followers()]
         followees = [followee.username for followee in self.profile.get_followees()]
         ug_them = [followee for followee in followees if followee not in followers]
