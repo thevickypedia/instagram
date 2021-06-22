@@ -6,23 +6,38 @@ from click import group, option
 from instaloader import Instaloader, Profile
 from requests import get
 
-if (insta_user := environ.get('insta_user')) and (insta_pass := environ.get('insta_pass')):
-    client = Instaloader()
-    client.login(user=insta_user, passwd=insta_pass)
-    insta_profile = Profile.from_username(client.context, insta_user)
-else:
-    exit("Store your Instagram login credentials as env vars.\n"
-         "export insta_user=<username>\nexport insta_pass=<password>")
+
+def login():
+    """Logs in to the instagram client using username and password stored as env vars.
+
+    Returns:
+        instagram module and profile information
+
+    """
+    if (insta_user := environ.get('insta_user')) and (insta_pass := environ.get('insta_pass')):
+        client = Instaloader()
+        client.login(user=insta_user, passwd=insta_pass)
+        insta_profile = Profile.from_username(client.context, insta_user)
+        return client, insta_profile
+    else:
+        exit("Store your Instagram login credentials as env vars.\n"
+             "export insta_user=<username>\nexport insta_pass=<password>")
 
 
 @group()
 def main():
     """Initiates IG client. Takes username and password as arguments for authentication.
+
     >>> Instaloader
+
+    Store your Instagram login credentials as env vars.
+
+    export insta_user=<username>
+
+    export insta_pass=<password>
     """
 
 
-# noinspection PyUnresolvedReferences
 @main.command()
 @option("--target-profile", prompt="Enter target profile name", help='Enter target username')
 def dp(target_profile):
@@ -32,6 +47,7 @@ def dp(target_profile):
         target_profile: User id of the profile for which the display picture has to be downloaded.
 
     """
+    client, insta_profile = login()
     profile_ = Profile.from_username(client.context, target_profile)  # use target user here to download the dp
     filename = f'{target_profile}.jpg'
     response = get(profile_.get_profile_pic_url(), stream=True)
@@ -46,10 +62,10 @@ def dp(target_profile):
         print('Profile picture has been deleted.')
 
 
-# noinspection PyUnresolvedReferences
 @main.command()
 def followers():
     """Prints followers' username and bio."""
+    client, insta_profile = login()
     for follower in insta_profile.get_followers():
         if username := follower.username:
             print(f'Username: {username}')
@@ -57,10 +73,11 @@ def followers():
             print(f'Bio: {bio}')
 
 
-# noinspection PyUnresolvedReferences
+# noinspection PyUnresolvedReferences.
 @main.command()
 def followees():
     """Prints followees' username and bio."""
+    client, insta_profile = login()
     for followee in insta_profile.get_followees():
         if username := followee.username:
             print(f'Username: {username}')
@@ -68,7 +85,6 @@ def followees():
             print(f'Bio: {bio}')
 
 
-# noinspection PyUnresolvedReferences
 @main.command()
 @option("--them", default=False, help="People who don't follow you back.")
 @option("--me", default=False, help="People who you don't follow back.")
@@ -80,6 +96,7 @@ def ungrateful(them, me):
         me: Takes boolean value to retrieve people who you don't follow back.
 
     """
+    client, insta_profile = login()
     if them or me:
         followers_ = [follower.username for follower in insta_profile.get_followers()]
         followees_ = [followee.username for followee in insta_profile.get_followees()]

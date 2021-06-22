@@ -8,22 +8,22 @@ export insta_user=<username>
 export insta_pass=<password>
 ```
 ### Setup
-`pip3 install -r requirements.txt`
+`pip3 install -r requirements.txt` - This installs the packages along with the instagram module.
 
 ### CLI
-`python3 cli.py --help` - Help information.
+`instagram --help` - Help information.
 
-`python3 cli.py dp --target-profile <username>`
+`instagram dp --target-profile <username>`
 <br>
-`python3 cli.py dp` - Will prompt to provide username.
+`instagram dp` - Will prompt to provide username.
 
-`python3 cli.py followers` - Prints followers' username and bio.
+`instagram followers` - Prints followers' username and bio.
 
-`python3 cli.py followees` - Prints followees' username and bio.
+`instagram followees` - Prints followees' username and bio.
 
-`python3 cli.py ungrateful --them=True` - Prints who don't follow you back.
+`instagram ungrateful --them=True` - Prints who don't follow you back.
 <br>
-`python3 cli.py ungrateful --me=True` - Prints who you don't follow back.
+`instagram ungrateful --me=True` - Prints who you don't follow back.
 
 ### Commit
 `pre-commit run --all-files` - This will ensure linting and generates docs from docstrings.

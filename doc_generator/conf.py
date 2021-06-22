@@ -14,7 +14,7 @@ import os
 import sys
 from pathlib import Path
 
-sys.path.insert(0, os.path.abspath('../..'))
+sys.path.insert(0, os.path.abspath('../insta'))
 sys.path.append(f'{Path(__file__).parent.parent}/venv/lib/python3.8/site-packages')
 
 # -- Project information -----------------------------------------------------

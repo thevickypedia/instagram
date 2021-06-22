@@ -41,9 +41,9 @@
 <h1>Welcome to Instagram Client’s documentation!<a class="headerlink" href="#welcome-to-instagram-client-s-documentation" title="Permalink to this headline">¶</a></h1>
 <div class="toctree-wrapper compound">
 </div>
-<span class="target" id="module-instagram.ig_connector"></span><dl class="py class">
-<dt class="sig sig-object py" id="instagram.ig_connector.Instagram">
-<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">instagram.ig_connector.</span></span><span class="sig-name descname"><span class="pre">Instagram</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">insta_user</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">insta_pass</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#instagram.ig_connector.Instagram" title="Permalink to this definition">¶</a></dt>
+<span class="target" id="module-ig_connector"></span><dl class="py class">
+<dt class="sig sig-object py" id="ig_connector.Instagram">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">ig_connector.</span></span><span class="sig-name descname"><span class="pre">Instagram</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">insta_user</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">insta_pass</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ig_connector.Instagram" title="Permalink to this definition">¶</a></dt>
 <dd><p>Initiates IG client. Takes username and password as arguments for authentication.</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">Instagram</span><span class="p">()</span>
 </pre></div>
@@ -57,8 +57,8 @@
 </dd>
 </dl>
 <dl class="py method">
-<dt class="sig sig-object py" id="instagram.ig_connector.Instagram.dp">
-<span class="sig-name descname"><span class="pre">dp</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">target_profile</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#instagram.ig_connector.Instagram.dp" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="ig_connector.Instagram.dp">
+<span class="sig-name descname"><span class="pre">dp</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">target_profile</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ig_connector.Instagram.dp" title="Permalink to this definition">¶</a></dt>
 <dd><p>Gets display picture of a profile and saves it locally. Also asks for deletion post preview.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -68,20 +68,20 @@
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="instagram.ig_connector.Instagram.followees">
-<span class="sig-name descname"><span class="pre">followees</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#instagram.ig_connector.Instagram.followees" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="ig_connector.Instagram.followees">
+<span class="sig-name descname"><span class="pre">followees</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ig_connector.Instagram.followees" title="Permalink to this definition">¶</a></dt>
 <dd><p>Prints followees’ username and bio.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="instagram.ig_connector.Instagram.followers">
-<span class="sig-name descname"><span class="pre">followers</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#instagram.ig_connector.Instagram.followers" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="ig_connector.Instagram.followers">
+<span class="sig-name descname"><span class="pre">followers</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ig_connector.Instagram.followers" title="Permalink to this definition">¶</a></dt>
 <dd><p>Prints followers’ username and bio.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="instagram.ig_connector.Instagram.followers_thread">
-<em class="property"><span class="pre">static</span> </em><span class="sig-name descname"><span class="pre">followers_thread</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">follower</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#instagram.ig_connector.Instagram.followers_thread" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="ig_connector.Instagram.followers_thread">
+<em class="property"><span class="pre">static</span> </em><span class="sig-name descname"><span class="pre">followers_thread</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">follower</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ig_connector.Instagram.followers_thread" title="Permalink to this definition">¶</a></dt>
 <dd><p>Takes follower’s profile data as input and prints their username and bio.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -91,16 +91,16 @@
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="instagram.ig_connector.Instagram.followers_threaded">
-<span class="sig-name descname"><span class="pre">followers_threaded</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#instagram.ig_connector.Instagram.followers_threaded" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="ig_connector.Instagram.followers_threaded">
+<span class="sig-name descname"><span class="pre">followers_threaded</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ig_connector.Instagram.followers_threaded" title="Permalink to this definition">¶</a></dt>
 <dd><p>Get followers’ information concurrently.</p>
 <p>Initiates Instagram().followers_thread() in a multi-threaded execution.
 Set max_workers to 5 as anything exceeding 10 will block the origin IP range for 10 minutes.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="instagram.ig_connector.Instagram.following_thread">
-<em class="property"><span class="pre">static</span> </em><span class="sig-name descname"><span class="pre">following_thread</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">followee</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#instagram.ig_connector.Instagram.following_thread" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="ig_connector.Instagram.following_thread">
+<em class="property"><span class="pre">static</span> </em><span class="sig-name descname"><span class="pre">following_thread</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">followee</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ig_connector.Instagram.following_thread" title="Permalink to this definition">¶</a></dt>
 <dd><p>Takes following people’s profile data as input and prints their username and bio.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -110,16 +110,16 @@ Set max_workers to 5 as anything exceeding 10 will block the origin IP range for
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="instagram.ig_connector.Instagram.following_threaded">
-<span class="sig-name descname"><span class="pre">following_threaded</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#instagram.ig_connector.Instagram.following_threaded" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="ig_connector.Instagram.following_threaded">
+<span class="sig-name descname"><span class="pre">following_threaded</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ig_connector.Instagram.following_threaded" title="Permalink to this definition">¶</a></dt>
 <dd><p>Get followees’ information concurrently.</p>
 <p>Initiates Instagram().following_thread() in a multi-threaded execution.
 Set max_workers to 5 as anything exceeding 10 will block the origin IP range for 10 minutes.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="instagram.ig_connector.Instagram.post_info">
-<span class="sig-name descname"><span class="pre">post_info</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">tagged</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#instagram.ig_connector.Instagram.post_info" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="ig_connector.Instagram.post_info">
+<span class="sig-name descname"><span class="pre">post_info</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">tagged</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ig_connector.Instagram.post_info" title="Permalink to this definition">¶</a></dt>
 <dd><p>Prints information of posts.</p>
 <p>Gets tagged posts’ information when ‘tagged’ is set to True
 Gets self post information when ‘tagged’ flag is not used</p>
@@ -131,11 +131,22 @@ Gets self post information when ‘tagged’ flag is not used</p>
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="instagram.ig_connector.Instagram.ungrateful">
-<span class="sig-name descname"><span class="pre">ungrateful</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#instagram.ig_connector.Instagram.ungrateful" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="ig_connector.Instagram.ungrateful">
+<span class="sig-name descname"><span class="pre">ungrateful</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ig_connector.Instagram.ungrateful" title="Permalink to this definition">¶</a></dt>
 <dd><p>Prints who doesn’t follow you back and who you don’t follow back.</p>
 </dd></dl>
 
+</dd></dl>
+
+<span class="target" id="module-cli"></span><dl class="py function">
+<dt class="sig sig-object py" id="cli.login">
+<span class="sig-prename descclassname"><span class="pre">cli.</span></span><span class="sig-name descname"><span class="pre">login</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#cli.login" title="Permalink to this definition">¶</a></dt>
+<dd><p>Logs in to the instagram client using username and password stored as env vars.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>instagram module and profile information</p>
+</dd>
+</dl>
 </dd></dl>
 
 </section>

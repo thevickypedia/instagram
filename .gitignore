@@ -1,3 +1,4 @@
 .idea
 venv
 /doc_generator/_build/
+instagram.egg-info
