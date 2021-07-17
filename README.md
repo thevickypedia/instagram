@@ -8,7 +8,7 @@ export insta_user=<username>
 export insta_pass=<password>
 ```
 ### Setup
-`pip3 install -r requirements.txt` - This installs the packages along with the instagram module.
+`pip install .` - This installs the `instagram` package along with its requirements.
 
 ### CLI
 `instagram --help` - Help information.
@@ -26,6 +26,8 @@ export insta_pass=<password>
 `instagram ungrateful --me=True` - Prints who you don't follow back.
 
 ### Commit
+`pip3 install -r requirements.txt` - This installs `pre-commit` for linting and `sphinx` for auto-doc generation.
+
 `pre-commit run --all-files` - This will ensure linting and generates docs from docstrings.
 
 ### Runbook
