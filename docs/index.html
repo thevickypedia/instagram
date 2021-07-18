@@ -8,31 +8,31 @@
 
     <title>Welcome to Instagram Client’s documentation! &#8212; instagram  documentation</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="_static/agogo.css" />
+    <link rel="stylesheet" type="text/css" href="_static/classic.css" />
+    
     <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
     <script src="_static/doctools.js"></script>
+    
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" /> 
   </head><body>
-    <div class="header-wrapper" role="banner">
-      <div class="header">
-        <div class="headertitle"><a
-          href="#">instagram  documentation</a></div>
-        <div class="rel" role="navigation" aria-label="related navigation">
-          <a href="py-modindex.html" title="Python Module Index"
-             >modules</a> |
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
           <a href="genindex.html" title="General Index"
-             accesskey="I">index</a>
-        </div>
-       </div>
-    </div>
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="nav-item nav-item-0"><a href="#">instagram  documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Welcome to Instagram Client’s documentation!</a></li> 
+      </ul>
+    </div>  
 
-    <div class="content-wrapper">
-      <div class="content">
-        <div class="document">
-            
+    <div class="document">
       <div class="documentwrapper">
         <div class="bodywrapper">
           <div class="body" role="main">
@@ -41,7 +41,120 @@
 <h1>Welcome to Instagram Client’s documentation!<a class="headerlink" href="#welcome-to-instagram-client-s-documentation" title="Permalink to this headline">¶</a></h1>
 <div class="toctree-wrapper compound">
 </div>
-<span class="target" id="module-ig_connector"></span><dl class="py class">
+</section>
+<section id="module-cli">
+<span id="instagram-cli"></span><h1>Instagram CLI<a class="headerlink" href="#module-cli" title="Permalink to this headline">¶</a></h1>
+<dl class="py class">
+<dt class="sig sig-object py" id="cli.InstagramCLI">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">cli.</span></span><span class="sig-name descname"><span class="pre">InstagramCLI</span></span><a class="headerlink" href="#cli.InstagramCLI" title="Permalink to this definition">¶</a></dt>
+<dd><p>Class for documentation.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">InstagramCLI</span>
+</pre></div>
+</div>
+<dl class="py method">
+<dt class="sig sig-object py" id="cli.InstagramCLI.main">
+<span class="sig-name descname"><span class="pre">main</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#cli.InstagramCLI.main" title="Permalink to this definition">¶</a></dt>
+<dd><p class="rubric">References</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">main</span>
+</pre></div>
+</div>
+<p>Initiates IG client. Takes username and password as arguments for authentication.</p>
+<ul>
+<li><dl>
+<dt>Shows the help message:</dt><dd><p><code class="docutils literal notranslate"><span class="pre">Store</span> <span class="pre">your</span> <span class="pre">Instagram</span> <span class="pre">login</span> <span class="pre">credentials</span> <span class="pre">as</span> <span class="pre">env</span> <span class="pre">vars.</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">export</span> <span class="pre">insta_user=&lt;username&gt;</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">export</span> <span class="pre">insta_pass=&lt;password&gt;</span></code></p>
+</dd>
+</dl>
+</li>
+</ul>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="cli.InstagramCLI.dp">
+<span class="sig-name descname"><span class="pre">dp</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#cli.InstagramCLI.dp" title="Permalink to this definition">¶</a></dt>
+<dd><p class="rubric">References</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">dp</span>
+</pre></div>
+</div>
+<p>Gets display picture of a profile and saves it locally. Also asks for deletion post preview.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>target_profile</strong> (<em>-</em>) – User id of the profile for which the display picture has to be downloaded.</p>
+</dd>
+<dt class="field-even">Yields</dt>
+<dd class="field-even"><p>Profile picture of the targeted profile</p>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<p><code class="docutils literal notranslate"><span class="pre">instagram</span> <span class="pre">dp</span> <span class="pre">--target-profile</span> <span class="pre">vignesh.vikky</span></code></p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="cli.InstagramCLI.followers">
+<span class="sig-name descname"><span class="pre">followers</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#cli.InstagramCLI.followers" title="Permalink to this definition">¶</a></dt>
+<dd><p class="rubric">References</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">followers</span>
+</pre></div>
+</div>
+<p>Prints followers’ username and bio.</p>
+<p class="rubric">Examples</p>
+<p><code class="docutils literal notranslate"><span class="pre">instagram</span> <span class="pre">followers</span></code></p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="cli.InstagramCLI.followees">
+<span class="sig-name descname"><span class="pre">followees</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#cli.InstagramCLI.followees" title="Permalink to this definition">¶</a></dt>
+<dd><p class="rubric">References</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">followees</span>
+</pre></div>
+</div>
+<p>Prints followees’ username and bio.</p>
+<p class="rubric">Examples</p>
+<p><code class="docutils literal notranslate"><span class="pre">instagram</span> <span class="pre">followees</span></code></p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="cli.InstagramCLI.ungrateful">
+<span class="sig-name descname"><span class="pre">ungrateful</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#cli.InstagramCLI.ungrateful" title="Permalink to this definition">¶</a></dt>
+<dd><p class="rubric">References</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">ungrateful</span>
+</pre></div>
+</div>
+<p>Prints who don’t follow you back and who you don’t follow back.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>them</strong> (<em>-</em>) – Takes boolean value to retrieve people who don’t follow you back.</p></li>
+<li><p><strong>me</strong> (<em>-</em>) – Takes boolean value to retrieve people who you don’t follow back.</p></li>
+</ul>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<p><code class="docutils literal notranslate"><span class="pre">instagram</span> <span class="pre">ungrateful</span> <span class="pre">--them=True</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">instagram</span> <span class="pre">ungrateful</span> <span class="pre">--me=True</span></code></p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="cli.InstagramCLI.login">
+<em class="property"><span class="pre">static</span> </em><span class="sig-name descname"><span class="pre">login</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">tuple</span></span></span><a class="headerlink" href="#cli.InstagramCLI.login" title="Permalink to this definition">¶</a></dt>
+<dd><p>Logs in to the instagram client using username and password stored as env vars.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>instagram module and profile information</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>tuple</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-ig_connector">
+<span id="instagram-connector"></span><h1>Instagram Connector<a class="headerlink" href="#module-ig_connector" title="Permalink to this headline">¶</a></h1>
+<dl class="py class">
 <dt class="sig sig-object py" id="ig_connector.Instagram">
 <em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">ig_connector.</span></span><span class="sig-name descname"><span class="pre">Instagram</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">insta_user</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">insta_pass</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ig_connector.Instagram" title="Permalink to this definition">¶</a></dt>
 <dd><p>Initiates IG client. Takes username and password as arguments for authentication.</p>
@@ -138,17 +251,6 @@ Gets self post information when ‘tagged’ flag is not used</p>
 
 </dd></dl>
 
-<span class="target" id="module-cli"></span><dl class="py function">
-<dt class="sig sig-object py" id="cli.login">
-<span class="sig-prename descclassname"><span class="pre">cli.</span></span><span class="sig-name descname"><span class="pre">login</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#cli.login" title="Permalink to this definition">¶</a></dt>
-<dd><p>Logs in to the instagram client using username and password stored as env vars.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p>instagram module and profile information</p>
-</dd>
-</dl>
-</dd></dl>
-
 </section>
 <section id="indices-and-tables">
 <h1>Indices and tables<a class="headerlink" href="#indices-and-tables" title="Permalink to this headline">¶</a></h1>
@@ -164,50 +266,53 @@ Gets self post information when ‘tagged’ flag is not used</p>
           </div>
         </div>
       </div>
-        </div>
-        <div class="sidebar">
-          
-          <h3>Table of Contents</h3>
-          
-          <div role="search">
-            <h3 style="margin-top: 1.5em;">Search</h3>
-            <form class="search" action="search.html" method="get">
-                <input type="text" name="q" />
-                <input type="submit" value="Go" />
-            </form>
-          </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="#">Table of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Welcome to Instagram Client’s documentation!</a></li>
+<li><a class="reference internal" href="#module-cli">Instagram CLI</a></li>
+<li><a class="reference internal" href="#module-ig_connector">Instagram Connector</a></li>
+<li><a class="reference internal" href="#indices-and-tables">Indices and tables</a></li>
+</ul>
 
-        </div>
-        <div class="clearer"></div>
-      </div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/index.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
     </div>
-
-    <div class="footer-wrapper">
-      <div class="footer">
-        <div class="left">
-          <div role="navigation" aria-label="related navigaton">
-            <a href="py-modindex.html" title="Python Module Index"
-              >modules</a> |
-            <a href="genindex.html" title="General Index"
-              >index</a>
-          </div>
-          <div role="note" aria-label="source link">
-              <br/>
-              <a href="_sources/index.rst.txt"
-                rel="nofollow">Show Source</a>
-          </div>
+</div>
+<script>$('#searchbox').show(0);</script>
         </div>
-
-        <div class="right">
-          
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="nav-item nav-item-0"><a href="#">instagram  documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Welcome to Instagram Client’s documentation!</a></li> 
+      </ul>
+    </div>
     <div class="footer" role="contentinfo">
         &#169; Copyright 2021, Vignesh Sivanandha Rao.
-      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.0.2.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.1.1.
     </div>
-        </div>
-        <div class="clearer"></div>
-      </div>
-    </div>
-
   </body>
 </html>

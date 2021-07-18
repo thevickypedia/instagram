@@ -10,11 +10,17 @@ Welcome to Instagram Client's documentation!
    :maxdepth: 2
    :caption: Contents:
 
-.. automodule:: ig_connector
+Instagram CLI
+=============
+
+.. automodule:: cli
    :members:
    :undoc-members:
 
-.. automodule:: cli
+Instagram Connector
+===================
+
+.. automodule:: ig_connector
    :members:
    :undoc-members:
 

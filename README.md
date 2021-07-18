@@ -8,14 +8,14 @@ export insta_user=<username>
 export insta_pass=<password>
 ```
 ### Setup
-`pip install .` - This installs the `instagram` package along with its requirements.
+`pip install .` - This installs the `instagram` package along with its requirements to use the CLI commands.
 
 ### CLI
 `instagram --help` - Help information.
 
 `instagram dp --target-profile <username>`
 <br>
-`instagram dp` - Will prompt to provide username.
+`instagram dp` - Prompts to provide username.
 
 `instagram followers` - Prints followers' username and bio.
 
@@ -31,7 +31,7 @@ export insta_pass=<password>
 `pre-commit run --all-files` - This will ensure linting and generates docs from docstrings.
 
 ### Runbook
-Page hosted at https://thevickypedia.github.io/instagram/
+https://thevickypedia.github.io/instagram/
 
 <!--
 ## Replicate auto generation of pages

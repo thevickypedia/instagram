@@ -1,18 +1,19 @@
 repos:
   -
     repo: https://gitlab.com/pycqa/flake8
-    rev: ''
+    rev: '3.9.2'
     hooks:
       -
         id: flake8
         additional_dependencies:
           - flake8-docstrings
           - flake8-sfs
-        args: [--max-line-length=120, --extend-ignore=SFS3 D107 SFS301 D100 D104]
+        # D214 was added to brute force unresolved references in InstagramCLI class
+        args: [--max-line-length=120, --extend-ignore=SFS3 D107 SFS301 D100 D104 D214]
 
   -
     repo: https://github.com/pre-commit/mirrors-isort
-    rev: ''
+    rev: 'v5.9.2'
     hooks:
       -
         id: isort
