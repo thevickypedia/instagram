@@ -81,61 +81,11 @@ pip install –no-cache –upgrade sphinx pre-commit recommonmark</p>
 <br>
 pre-commit run –all-files</p>
 </section>
-<section id="runbook">
-<h2>Runbook<a class="headerlink" href="#runbook" title="Permalink to this headline">¶</a></h2>
-<p>https://thevickypedia.github.io/instagram/</p>
-<!--
-## Replicate auto generation of pages
-`pip3 install sphinx`<br>
-`cd doc_generator`<br>
-`sphinx-quickstart`<br>
-### Addition to index.rst
-```reStructuredText
-.. automodule:: instagram.ig_connector
-   :members:
-   :undoc-members:
-```
-### Modifications to conf.py
-- Insert and append file path for entry point script and libraries.
-```python
-import os
-import sys
-from pathlib import Path
-sys.path.insert(0, os.path.abspath('../..'))
-sys.path.append(f'{Path(__file__).parent.parent}/venv/lib/python3.8/site-packages')
-```
-- Extensions to auto-generate doc_generator.
-```python
-extensions = [
-    'sphinx.ext.napoleon',  # certain styles of doc strings
-    'sphinx.ext.autodoc'  # generates from doc strings
-]
-```
-- HTML theme output
-```
-# https://www.sphinx-doc.org/en/master/usage/theming.html#builtin-themes
-html_theme = 'agogo'
-```
-
-<details>
-<sumary>gen_docs.sh</sumary>
-
-```bash
-#!/usr/bin/env bash
-# set -e stops the execution of a script if a command or pipeline has an error.<br>
-# This is the opposite of the default shell behaviour, which is to ignore errors in scripts.
-set -e
-rm -rf docs
-mkdir docs
-shopt -s dotglob nullglob  # https://www.gnu.org/software/bash/manual/bash.html#The-Shopt-Builtin
-cd doc_generator && make html && mv _build/html/* ../docs
-touch ../docs/.nojekyll
-git add ../docs
-```
-
-</details>
-
---></section>
+<section id="links">
+<h2>Links<a class="headerlink" href="#links" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference external" href="https://github.com/thevickypedia/instagram">Repository</a></p>
+<p><a class="reference external" href="https://thevickypedia.github.io/instagram/">Runbook</a></p>
+</section>
 </section>
 
 
@@ -152,7 +102,7 @@ git add ../docs
 <li><a class="reference internal" href="#setup">Setup</a></li>
 <li><a class="reference internal" href="#cli">CLI</a></li>
 <li><a class="reference internal" href="#commit">Commit</a></li>
-<li><a class="reference internal" href="#runbook">Runbook</a></li>
+<li><a class="reference internal" href="#links">Links</a></li>
 </ul>
 </li>
 </ul>
