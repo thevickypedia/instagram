@@ -1,10 +1,14 @@
-from os import environ, remove
+from os import environ, path, remove
 from shutil import copyfileobj
 from subprocess import call
 
 from click import group, option
+from dotenv import load_dotenv
 from instaloader import Instaloader, Profile
 from requests import get
+
+if path.isfile('.env'):
+    load_dotenv(dotenv_path='.env', verbose=True, override=True)
 
 
 class InstagramCLI:
@@ -70,9 +74,9 @@ class InstagramCLI:
                 - me: Takes boolean value to retrieve people who you don't follow back.
 
             Examples:
-                ``instagram ungrateful --them=True``
+                ``instagram ungrateful --them``
 
-                ``instagram ungrateful --me=True``
+                ``instagram ungrateful --me``
 
     """
 
@@ -157,8 +161,8 @@ def followees():
 
 
 @main.command()
-@option("--them", default=False, help="People who don't follow you back.")
-@option("--me", default=False, help="People who you don't follow back.")
+@option("--them", is_flag=True, help="People who don't follow you back.")
+@option("--me", is_flag=True, help="People who you don't follow back.")
 def ungrateful(them, me):
     """Prints who don't follow you back and who you don't follow back.
 

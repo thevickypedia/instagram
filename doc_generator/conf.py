@@ -30,8 +30,13 @@ author = 'Vignesh Sivanandha Rao'
 # ones.
 extensions = [
     'sphinx.ext.napoleon',  # certain styles of doc strings
-    'sphinx.ext.autodoc'  # generates from doc strings
+    'sphinx.ext.autodoc',  # generates from doc strings
+    'recommonmark',  # supports markdown integration
 ]
+
+# https://www.sphinx-doc.org/en/master/usage/extensions/napoleon.html#configuration
+napoleon_google_docstring = True
+napoleon_use_param = False
 
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ['_templates']
@@ -55,3 +60,16 @@ html_theme_options = {
 # relative to this directory. They are copied after the builtin static files,
 # so a file named "default.css" will overwrite the builtin "default.css".
 html_static_path = ['_static']
+
+
+# Add docstrings from __init__ method
+# Reference: https://www.sphinx-doc.org/en/master/usage/extensions/autodoc.html#confval-autoclass_content
+autoclass_content = 'both'
+
+# Add support to mark down files in sphinx documentation
+# Reference: https://www.sphinx-doc.org/en/1.5.3/markdown.html
+source_suffix = {
+    '.rst': 'restructuredtext',
+    '.txt': 'markdown',
+    '.md': 'markdown',
+}

@@ -8,7 +8,9 @@ Welcome to Instagram Client's documentation!
 
 .. toctree::
    :maxdepth: 2
-   :caption: Contents:
+   :caption: Read Me:
+
+   README
 
 Instagram CLI
 =============

@@ -16,7 +16,8 @@
     <script src="_static/doctools.js"></script>
     
     <link rel="index" title="Index" href="genindex.html" />
-    <link rel="search" title="Search" href="search.html" /> 
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Instagram" href="README.html" /> 
   </head><body>
     <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
@@ -27,6 +28,9 @@
         <li class="right" >
           <a href="py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
+        <li class="right" >
+          <a href="README.html" title="Instagram"
+             accesskey="N">next</a> |</li>
         <li class="nav-item nav-item-0"><a href="#">instagram  documentation</a> &#187;</li>
         <li class="nav-item nav-item-this"><a href="">Welcome to Instagram Client’s documentation!</a></li> 
       </ul>
@@ -40,6 +44,17 @@
   <section id="welcome-to-instagram-client-s-documentation">
 <h1>Welcome to Instagram Client’s documentation!<a class="headerlink" href="#welcome-to-instagram-client-s-documentation" title="Permalink to this headline">¶</a></h1>
 <div class="toctree-wrapper compound">
+<p class="caption" role="heading"><span class="caption-text">Read Me:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="README.html">Instagram</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="README.html#env-variables">Env Variables</a></li>
+<li class="toctree-l2"><a class="reference internal" href="README.html#setup">Setup</a></li>
+<li class="toctree-l2"><a class="reference internal" href="README.html#cli">CLI</a></li>
+<li class="toctree-l2"><a class="reference internal" href="README.html#commit">Commit</a></li>
+<li class="toctree-l2"><a class="reference internal" href="README.html#runbook">Runbook</a></li>
+</ul>
+</li>
+</ul>
 </div>
 </section>
 <section id="module-cli">
@@ -80,7 +95,7 @@
 <p>Gets display picture of a profile and saves it locally. Also asks for deletion post preview.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>target_profile</strong> (<em>-</em>) – User id of the profile for which the display picture has to be downloaded.</p>
+<dd class="field-odd"><p><strong>- target_profile</strong> – User id of the profile for which the display picture has to be downloaded.</p>
 </dd>
 <dt class="field-even">Yields</dt>
 <dd class="field-even"><p>Profile picture of the targeted profile</p>
@@ -125,14 +140,14 @@
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>them</strong> (<em>-</em>) – Takes boolean value to retrieve people who don’t follow you back.</p></li>
-<li><p><strong>me</strong> (<em>-</em>) – Takes boolean value to retrieve people who you don’t follow back.</p></li>
+<li><p><strong>- them</strong> – Takes boolean value to retrieve people who don’t follow you back.</p></li>
+<li><p><strong>- me</strong> – Takes boolean value to retrieve people who you don’t follow back.</p></li>
 </ul>
 </dd>
 </dl>
 <p class="rubric">Examples</p>
-<p><code class="docutils literal notranslate"><span class="pre">instagram</span> <span class="pre">ungrateful</span> <span class="pre">--them=True</span></code></p>
-<p><code class="docutils literal notranslate"><span class="pre">instagram</span> <span class="pre">ungrateful</span> <span class="pre">--me=True</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">instagram</span> <span class="pre">ungrateful</span> <span class="pre">--them</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">instagram</span> <span class="pre">ungrateful</span> <span class="pre">--me</span></code></p>
 </dd></dl>
 
 <dl class="py method">
@@ -276,6 +291,9 @@ Gets self post information when ‘tagged’ flag is not used</p>
 <li><a class="reference internal" href="#indices-and-tables">Indices and tables</a></li>
 </ul>
 
+  <h4>Next topic</h4>
+  <p class="topless"><a href="README.html"
+                        title="next chapter">Instagram</a></p>
   <div role="note" aria-label="source link">
     <h3>This Page</h3>
     <ul class="this-page-menu">
@@ -306,13 +324,16 @@ Gets self post information when ‘tagged’ flag is not used</p>
         <li class="right" >
           <a href="py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
+        <li class="right" >
+          <a href="README.html" title="Instagram"
+             >next</a> |</li>
         <li class="nav-item nav-item-0"><a href="#">instagram  documentation</a> &#187;</li>
         <li class="nav-item nav-item-this"><a href="">Welcome to Instagram Client’s documentation!</a></li> 
       </ul>
     </div>
     <div class="footer" role="contentinfo">
         &#169; Copyright 2021, Vignesh Sivanandha Rao.
-      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.1.1.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.2.0.
     </div>
   </body>
 </html>

@@ -4,7 +4,8 @@
 set -e
 rm -rf docs
 mkdir docs
+[ ! -d "doc_generator/_static" ] && mkdir doc_generator/_static
+cp README.md doc_generator && cd doc_generator && make clean html && mv _build/html/* ../docs && rm README.md
 shopt -s dotglob nullglob  # https://www.gnu.org/software/bash/manual/bash.html#The-Shopt-Builtin
-cd doc_generator && make html && mv _build/html/* ../docs
 touch ../docs/.nojekyll
 git add ../docs
