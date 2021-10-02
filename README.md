@@ -14,7 +14,7 @@ Optionally environment variables can be loaded from a `.env` file using the pyth
 ### CLI
 `instagram --help` - Help information.
 
-`instagram dp --target-profile <username>`
+`instagram dp --profile <username>`
 <br>
 `instagram dp` - Prompts to provide username.
 

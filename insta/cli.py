@@ -2,7 +2,7 @@ from os import environ, path, remove
 from shutil import copyfileobj
 from subprocess import call
 
-from click import group, option
+from click import group, option, secho
 from dotenv import load_dotenv
 from instaloader import Instaloader, Profile
 from requests import get
@@ -43,7 +43,7 @@ class InstagramCLI:
                 Profile picture of the targeted profile
 
             Examples:
-                ``instagram dp --target-profile vignesh.vikky``
+                ``instagram dp --profile vignesh.vikky``
 
         followers
             References:
@@ -87,7 +87,6 @@ class InstagramCLI:
         Returns:
             tuple:
             instagram module and profile information
-
         """
         if (insta_user := environ.get('insta_user')) and (insta_pass := environ.get('insta_pass')):
             client = Instaloader()
@@ -114,17 +113,16 @@ def main() -> None:
 
 
 @main.command()
-@option("--target-profile", prompt="Enter target profile name", help='Enter target username')
-def dp(target_profile) -> None:
+@option("--profile", prompt="Enter target profile name", help='Enter target username')
+def dp(profile) -> None:
     """Gets display picture of a profile and saves it locally. Also asks for deletion post preview.
 
     Args:
-        target_profile: User id of the profile for which the display picture has to be downloaded.
-
+        profile: User id of the profile for which the display picture has to be downloaded.
     """
     client, insta_profile = InstagramCLI.login()
-    profile_ = Profile.from_username(client.context, target_profile)  # use target user here to download the dp
-    filename = f'{target_profile}.jpg'
+    profile_ = Profile.from_username(client.context, profile)  # use target user here to download the dp
+    filename = f'{profile}.jpg'
     response = get(profile_.get_profile_pic_url(), stream=True)
     response.raw.decode_content = True
     with open(filename, 'wb') as file:
@@ -134,7 +132,7 @@ def dp(target_profile) -> None:
     delete_res = input('Do you want to delete the picture? (Y/N)\n')
     if delete_res == 'y' or delete_res.lower() == 'yes':
         remove(filename)
-        print('Profile picture has been deleted.')
+        secho(message='Profile picture has been deleted.', fg='green')
 
 
 @main.command()
@@ -143,9 +141,9 @@ def followers():
     client, insta_profile = InstagramCLI.login()
     for follower in insta_profile.get_followers():
         if username := follower.username:
-            print(f'Username: {username}')
+            secho(message=f'Username: {username}', fb='green')
         if bio := follower.biography:
-            print(f'Bio: {bio}')
+            secho(message=f'Bio: {bio}', fb='green')
 
 
 # noinspection PyUnresolvedReferences.
@@ -155,9 +153,9 @@ def followees():
     client, insta_profile = InstagramCLI.login()
     for followee in insta_profile.get_followees():
         if username := followee.username:
-            print(f'Username: {username}')
+            secho(message=f'Username: {username}', fb='green')
         if bio := followee.biography:
-            print(f'Bio: {bio}')
+            secho(message=f'Bio: {bio}', fb='green')
 
 
 @main.command()
@@ -169,7 +167,6 @@ def ungrateful(them, me):
     Args:
         them: Takes boolean value to retrieve people who don't follow you back.
         me: Takes boolean value to retrieve people who you don't follow back.
-
     """
     client, insta_profile = InstagramCLI.login()
     if them or me:
@@ -178,11 +175,11 @@ def ungrateful(them, me):
 
         if them:
             ug_them = [followee for followee in followees_ if followee not in followers_]
-            print(f'Ungrateful Them: {len(ug_them)}\n{sorted(ug_them)}')
+            secho(message=f'Ungrateful Them: {len(ug_them)}\n{sorted(ug_them)}', fb='green')
 
         if me:
             ug_me = [follower for follower in followers_ if follower not in followees_]
-            print(f'\n\nUngrateful Me: {len(ug_me)}\n{sorted(ug_me)}')
+            secho(message=f'\n\nUngrateful Me: {len(ug_me)}\n{sorted(ug_me)}', fb='green')
 
 
 if __name__ == '__main__':
