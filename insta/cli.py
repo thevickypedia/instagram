@@ -4,7 +4,7 @@ from subprocess import call
 
 from click import group, option, secho
 from dotenv import load_dotenv
-from instaloader import Instaloader, Profile
+from instaloader import Instaloader, Profile, exceptions
 from requests import get
 
 if path.isfile('.env'):
@@ -43,7 +43,7 @@ class InstagramCLI:
                 Profile picture of the targeted profile
 
             Examples:
-                ``instagram dp --profile vignesh.vikky``
+                ``insta dp --profile vignesh.vikky``
 
         followers
             References:
@@ -52,7 +52,7 @@ class InstagramCLI:
             Prints followers' username and bio.
 
             Examples:
-                ``instagram followers``
+                ``insta followers``
 
         followees
             References:
@@ -61,7 +61,7 @@ class InstagramCLI:
             Prints followees' username and bio.
 
             Examples:
-                ``instagram followees``
+                ``insta followees``
 
         ungrateful
             References:
@@ -74,9 +74,9 @@ class InstagramCLI:
                 - me: Takes boolean value to retrieve people who you don't follow back.
 
             Examples:
-                ``instagram ungrateful --them``
+                ``insta ungrateful --them``
 
-                ``instagram ungrateful --me``
+                ``insta ungrateful --me``
 
     """
 
@@ -120,7 +120,11 @@ def dp(profile) -> None:
     Args:
         profile: User id of the profile for which the display picture has to be downloaded.
     """
-    client, insta_profile = InstagramCLI.login()
+    try:
+        client, insta_profile = InstagramCLI.login()
+    except exceptions.BadCredentialsException:
+        secho(message='Credentials are invalid.', bold=True, fg='red')
+        return
     profile_ = Profile.from_username(client.context, profile)  # use target user here to download the dp
     filename = f'{profile}.jpg'
     response = get(profile_.get_profile_pic_url(), stream=True)

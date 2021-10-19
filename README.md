@@ -12,19 +12,19 @@ Optionally environment variables can be loaded from a `.env` file using the pyth
 `pip install .` - This installs the `instagram` package along with its requirements to use the CLI commands.
 
 ### CLI
-`instagram --help` - Help information.
+`insta --help` - Help information.
 
-`instagram dp --profile <username>`
+`insta dp --profile <username>`
 <br>
-`instagram dp` - Prompts to provide username.
+`insta dp` - Prompts to provide username.
 
-`instagram followers` - Prints followers' username and bio.
+`insta followers` - Prints followers' username and bio.
 
-`instagram followees` - Prints followees' username and bio.
+`insta followees` - Prints followees' username and bio.
 
-`instagram ungrateful --them` - Prints who don't follow you back.
+`insta ungrateful --them` - Prints who don't follow you back.
 <br>
-`instagram ungrateful --me` - Prints who you don't follow back.
+`insta ungrateful --me` - Prints who you don't follow back.
 
 ### Commit
 `pip3 install -r requirements.txt` - This installs `pre-commit` for linting and `sphinx` for auto-doc generation.
