@@ -1,10 +1,14 @@
 from concurrent.futures import ThreadPoolExecutor
-from os import environ, remove
+from os import environ, path, remove
 from shutil import copyfileobj
 from subprocess import call
 
+import requests
+from dotenv import load_dotenv
 from instaloader import Instaloader, Profile
-from requests import get
+
+if path.isfile('../.env'):
+    load_dotenv(dotenv_path='../.env', verbose=True, override=True)
 
 
 class Instagram:
@@ -32,11 +36,10 @@ class Instagram:
 
         Args:
             target_profile: User id of the profile for which the display picture has to be downloaded.
-
         """
         profile = Profile.from_username(self.client.context, target_profile)  # use target user here to download the dp
         filename = f'{target_profile}.jpg'
-        response = get(profile.get_profile_pic_url(), stream=True)
+        response = requests.get(url=profile.get_profile_pic_url(), stream=True)
         response.raw.decode_content = True
         with open(filename, 'wb') as file:
             copyfileobj(response.raw, file)
@@ -71,13 +74,13 @@ class Instagram:
 
         Args:
             tagged: Takes boolean value as argument. Set to False by default.
-
         """
         if tagged:
             posts = self.profile.get_tagged_posts()
         else:
             posts = self.profile.get_posts()
         for post in posts:
+            print(post.title)
             profile = post.profile
             location = post.location
             url = post.url
@@ -99,7 +102,7 @@ class Instagram:
                 print(f'Views: {view_count}') if view_count else None
                 print(f'Duration: {video_duration}') if video_duration else None
 
-            response = get(url, stream=True)
+            response = requests.get(url=url, stream=True)
             response.raw.decode_content = True
             filename = f'{str(date_local).replace(" ", "_") + extension}'
             with open(filename, 'wb') as file:
@@ -128,7 +131,6 @@ class Instagram:
 
         Args:
             follower: Takes follower profile data as argument.
-
         """
         username = follower.username
         bio = str(follower.biography).replace('\n', '\t')
@@ -142,7 +144,6 @@ class Instagram:
 
         Initiates Instagram().followers_thread() in a multi-threaded execution.
         Set max_workers to 5 as anything exceeding 10 will block the origin IP range for 10 minutes.
-
         """
         with ThreadPoolExecutor(max_workers=5) as executor:
             executor.map(self.followers_thread, self.profile.get_followers())
@@ -153,7 +154,6 @@ class Instagram:
 
         Args:
             followee: Take followee profile data as argument.
-
         """
         username = followee.username
         bio = str(followee.biography).replace('\n', '\t')
@@ -167,7 +167,6 @@ class Instagram:
 
         Initiates Instagram().following_thread() in a multi-threaded execution.
         Set max_workers to 5 as anything exceeding 10 will block the origin IP range for 10 minutes.
-
         """
         with ThreadPoolExecutor(max_workers=5) as executor:
             executor.map(self.following_thread, self.profile.get_followees())

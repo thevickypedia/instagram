@@ -2,10 +2,10 @@ from os import environ, path, remove
 from shutil import copyfileobj
 from subprocess import call
 
+import requests
 from click import group, option, secho
 from dotenv import load_dotenv
 from instaloader import Instaloader, Profile, exceptions
-from requests import get
 
 if path.isfile('.env'):
     load_dotenv(dotenv_path='.env', verbose=True, override=True)
@@ -127,7 +127,7 @@ def dp(profile) -> None:
         return
     profile_ = Profile.from_username(client.context, profile)  # use target user here to download the dp
     filename = f'{profile}.jpg'
-    response = get(profile_.get_profile_pic_url(), stream=True)
+    response = requests.get(url=profile_.get_profile_pic_url(), stream=True)
     response.raw.decode_content = True
     with open(filename, 'wb') as file:
         copyfileobj(response.raw, file)
@@ -179,11 +179,11 @@ def ungrateful(them, me):
 
         if them:
             ug_them = [followee for followee in followees_ if followee not in followers_]
-            secho(message=f'Ungrateful Them: {len(ug_them)}\n{sorted(ug_them)}', fb='green')
+            print(f'Ungrateful Them: {len(ug_them)}\n{sorted(ug_them)}')
 
         if me:
             ug_me = [follower for follower in followers_ if follower not in followees_]
-            secho(message=f'\n\nUngrateful Me: {len(ug_me)}\n{sorted(ug_me)}', fb='green')
+            print(f'Ungrateful Me: {len(ug_me)}\n{sorted(ug_me)}')
 
 
 if __name__ == '__main__':
