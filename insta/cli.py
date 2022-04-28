@@ -1,13 +1,14 @@
-from os import environ, path, remove
-from shutil import copyfileobj
-from subprocess import call
+import os
+import shutil
+import subprocess
+from typing import NoReturn, Tuple
 
+import click
 import requests
-from click import group, option, secho
 from dotenv import load_dotenv
 from instaloader import Instaloader, Profile, exceptions
 
-if path.isfile('.env'):
+if os.path.isfile('.env'):
     load_dotenv(dotenv_path='.env', verbose=True, override=True)
 
 
@@ -81,14 +82,14 @@ class InstagramCLI:
     """
 
     @staticmethod
-    def login() -> tuple:
+    def login() -> Tuple:
         """Logs in to the instagram client using username and password stored as env vars.
 
         Returns:
             tuple:
             instagram module and profile information
         """
-        if (insta_user := environ.get('insta_user')) and (insta_pass := environ.get('insta_pass')):
+        if (insta_user := os.environ.get('insta_user')) and (insta_pass := os.environ.get('insta_pass')):
             client = Instaloader()
             client.login(user=insta_user, passwd=insta_pass)
             insta_profile = Profile.from_username(client.context, insta_user)
@@ -98,8 +99,8 @@ class InstagramCLI:
                  "export insta_user=<username>\nexport insta_pass=<password>")
 
 
-@group()
-def main() -> None:
+@click.group()
+def main() -> NoReturn:
     """Initiates IG client. Takes username and password as arguments for authentication.
 
     >>> Instaloader
@@ -113,8 +114,8 @@ def main() -> None:
 
 
 @main.command()
-@option("--profile", prompt="Enter target profile name", help='Enter target username')
-def dp(profile) -> None:
+@click.option("--profile", prompt="Enter target profile name", help='Enter target username')
+def dp(profile: str) -> NoReturn:
     """Gets display picture of a profile and saves it locally. Also asks for deletion post preview.
 
     Args:
@@ -123,20 +124,20 @@ def dp(profile) -> None:
     try:
         client, insta_profile = InstagramCLI.login()
     except exceptions.BadCredentialsException:
-        secho(message='Credentials are invalid.', bold=True, fg='red')
+        click.secho(message='Credentials are invalid.', bold=True, fg='red')
         return
     profile_ = Profile.from_username(client.context, profile)  # use target user here to download the dp
     filename = f'{profile}.jpg'
-    response = requests.get(url=profile_.get_profile_pic_url(), stream=True)
+    response = requests.get(profile_.get_profile_pic_url(), stream=True)
     response.raw.decode_content = True
     with open(filename, 'wb') as file:
-        copyfileobj(response.raw, file)
+        shutil.copyfileobj(response.raw, file)
         file.close()
-    call(["open", filename])
+    subprocess.call(["open", filename])
     delete_res = input('Do you want to delete the picture? (Y/N)\n')
     if delete_res == 'y' or delete_res.lower() == 'yes':
-        remove(filename)
-        secho(message='Profile picture has been deleted.', fg='green')
+        os.remove(filename)
+        click.secho(message='Profile picture has been deleted.', fg='green')
 
 
 @main.command()
@@ -145,9 +146,9 @@ def followers():
     client, insta_profile = InstagramCLI.login()
     for follower in insta_profile.get_followers():
         if username := follower.username:
-            secho(message=f'Username: {username}', fb='green')
+            click.secho(message=f'Username: {username}', fg='green')
         if bio := follower.biography:
-            secho(message=f'Bio: {bio}', fb='green')
+            click.secho(message=f'Bio: {bio}', fg='green')
 
 
 # noinspection PyUnresolvedReferences.
@@ -157,15 +158,15 @@ def followees():
     client, insta_profile = InstagramCLI.login()
     for followee in insta_profile.get_followees():
         if username := followee.username:
-            secho(message=f'Username: {username}', fb='green')
+            click.secho(message=f'Username: {username}', fg='green')
         if bio := followee.biography:
-            secho(message=f'Bio: {bio}', fb='green')
+            click.secho(message=f'Bio: {bio}', fg='green')
 
 
 @main.command()
-@option("--them", is_flag=True, help="People who don't follow you back.")
-@option("--me", is_flag=True, help="People who you don't follow back.")
-def ungrateful(them, me):
+@click.option("--them", is_flag=True, help="People who don't follow you back.")
+@click.option("--me", is_flag=True, help="People who you don't follow back.")
+def ungrateful(them: bool, me: bool):
     """Prints who don't follow you back and who you don't follow back.
 
     Args:
@@ -179,11 +180,11 @@ def ungrateful(them, me):
 
         if them:
             ug_them = [followee for followee in followees_ if followee not in followers_]
-            print(f'Ungrateful Them: {len(ug_them)}\n{sorted(ug_them)}')
+            click.secho(message=f'Ungrateful Them: {len(ug_them)}\n{sorted(ug_them)}', fg='green')
 
         if me:
             ug_me = [follower for follower in followers_ if follower not in followees_]
-            print(f'Ungrateful Me: {len(ug_me)}\n{sorted(ug_me)}')
+            click.secho(message=f'\n\nUngrateful Me: {len(ug_me)}\n{sorted(ug_me)}', fg='green')
 
 
 if __name__ == '__main__':

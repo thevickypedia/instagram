@@ -22,23 +22,23 @@ Optionally environment variables can be loaded from a `.env` file using the pyth
 
 `insta followees` - Prints followees' username and bio.
 
-`insta ungrateful --them` - Prints who don't follow you back.
+`insta ungrateful --them` - Prints you follow who don't follow you back.
 <br>
-`insta ungrateful --me` - Prints who you don't follow back.
+`insta ungrateful --me` - Prints followers who you don't follow back.
 
 ### Commit
 `pip3 install -r requirements.txt` - This installs `pre-commit` for linting and `sphinx` for auto-doc generation.
 
-Linting:
-<br>
+**Linting:**
+
 PreCommit will ensure linting, and the doc creation are run on every commit.
 
-Requirement:
-<br>
+**Requirement:**
+
 pip install --no-cache --upgrade sphinx pre-commit recommonmark
 
-Usage:
-<br>
+**Usage:**
+
 pre-commit run --all-files
 
 ### Links
