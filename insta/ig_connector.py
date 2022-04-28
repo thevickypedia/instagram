@@ -1,29 +1,24 @@
+import os
+import shutil
+import subprocess
 from concurrent.futures import ThreadPoolExecutor
-from os import environ, path, remove
-from shutil import copyfileobj
-from subprocess import call
+from typing import NoReturn
 
 import requests
-from dotenv import load_dotenv
 from instaloader import Instaloader, Profile
-
-if path.isfile('../.env'):
-    load_dotenv(dotenv_path='../.env', verbose=True, override=True)
 
 
 class Instagram:
     """Initiates IG client. Takes username and password as arguments for authentication.
 
-        >>> Instagram()
+    >>> Instagram
 
     Args:
         insta_user: Username for the authentication instagram account.
         insta_pass: Password for the authentication instagram account.
     """
 
-    def __init__(self, insta_user: str = None, insta_pass: str = None):
-        insta_user = insta_user or environ.get('insta_user')
-        insta_pass = insta_pass or environ.get('insta_pass')
+    def __init__(self, insta_user: str = os.environ.get('insta_user'), insta_pass: str = os.environ.get('insta_pass')):
         if not (insta_user and insta_pass):
             exit("Store your Instagram login credentials as env vars.\n"
                  "insta_user=<username>\ninsta_pass=<password>")
@@ -31,7 +26,7 @@ class Instagram:
         self.client.login(insta_user, insta_pass)
         self.profile = Profile.from_username(self.client.context, insta_user)
 
-    def dp(self, target_profile):
+    def dp(self, target_profile: str) -> NoReturn:
         """Gets display picture of a profile and saves it locally. Also asks for deletion post preview.
 
         Args:
@@ -39,18 +34,18 @@ class Instagram:
         """
         profile = Profile.from_username(self.client.context, target_profile)  # use target user here to download the dp
         filename = f'{target_profile}.jpg'
-        response = requests.get(url=profile.get_profile_pic_url(), stream=True)
+        response = requests.get(profile.get_profile_pic_url(), stream=True)
         response.raw.decode_content = True
         with open(filename, 'wb') as file:
-            copyfileobj(response.raw, file)
+            shutil.copyfileobj(response.raw, file)
             file.close()
-        call(["open", filename])
+        subprocess.call(["open", filename])
         delete_res = input('Do you want to delete the picture? (Y/N)\n')
         if delete_res == 'y' or delete_res.lower() == 'yes':
-            remove(filename)
+            os.remove(filename)
             print('Profile picture has been deleted.')
 
-    def followers(self):
+    def followers(self) -> NoReturn:
         """Prints followers' username and bio."""
         for follower in self.profile.get_followers():
             username = follower.username
@@ -58,7 +53,7 @@ class Instagram:
             print(f'Username: {username}') if username else None
             print(f'Bio: {bio}') if bio else None
 
-    def followees(self):
+    def followees(self) -> NoReturn:
         """Prints followees' username and bio."""
         for followee in self.profile.get_followees():
             username = followee.username
@@ -66,7 +61,7 @@ class Instagram:
             print(f'Username: {username}') if username else None
             print(f'Bio: {bio}') if bio else None
 
-    def post_info(self, tagged=True):
+    def post_info(self, tagged: bool = True) -> NoReturn:
         """Prints information of posts.
 
         Gets tagged posts' information when 'tagged' is set to True
@@ -80,7 +75,6 @@ class Instagram:
         else:
             posts = self.profile.get_posts()
         for post in posts:
-            print(post.title)
             profile = post.profile
             location = post.location
             url = post.url
@@ -102,13 +96,13 @@ class Instagram:
                 print(f'Views: {view_count}') if view_count else None
                 print(f'Duration: {video_duration}') if video_duration else None
 
-            response = requests.get(url=url, stream=True)
+            response = requests.get(url, stream=True)
             response.raw.decode_content = True
             filename = f'{str(date_local).replace(" ", "_") + extension}'
             with open(filename, 'wb') as file:
-                copyfileobj(response.raw, file)
+                shutil.copyfileobj(response.raw, file)
                 file.close()
-            call(["open", filename])
+            subprocess.call(["open", filename])
 
             print(f'Profile: {profile}') if profile else None
             if tagged:
@@ -126,7 +120,7 @@ class Instagram:
             print('\n')
 
     @staticmethod
-    def followers_thread(follower):
+    def followers_thread(follower: Profile) -> NoReturn:
         """Takes follower's profile data as input and prints their username and bio.
 
         Args:
@@ -139,17 +133,18 @@ class Instagram:
         else:
             print(f'Username: {username}')
 
-    def followers_threaded(self):
+    def followers_threaded(self) -> NoReturn:
         """Get followers' information concurrently.
 
         Initiates Instagram().followers_thread() in a multi-threaded execution.
         Set max_workers to 5 as anything exceeding 10 will block the origin IP range for 10 minutes.
+
         """
         with ThreadPoolExecutor(max_workers=5) as executor:
             executor.map(self.followers_thread, self.profile.get_followers())
 
     @staticmethod
-    def following_thread(followee):
+    def following_thread(followee: Profile) -> NoReturn:
         """Takes following people's profile data as input and prints their username and bio.
 
         Args:
@@ -162,7 +157,7 @@ class Instagram:
         else:
             print(f'Username: {username}')
 
-    def following_threaded(self):
+    def following_threaded(self) -> NoReturn:
         """Get followees' information concurrently.
 
         Initiates Instagram().following_thread() in a multi-threaded execution.
@@ -171,7 +166,7 @@ class Instagram:
         with ThreadPoolExecutor(max_workers=5) as executor:
             executor.map(self.following_thread, self.profile.get_followees())
 
-    def ungrateful(self):
+    def ungrateful(self) -> NoReturn:
         """Prints who doesn't follow you back and who you don't follow back."""
         followers = [follower.username for follower in self.profile.get_followers()]
         followees = [followee.username for followee in self.profile.get_followees()]
@@ -182,7 +177,3 @@ class Instagram:
         ug_me = [follower for follower in followers if follower not in followees]
         print(f'\n\nUngrateful Me: {len(ug_me)}')
         print(sorted(ug_me))
-
-
-if __name__ == '__main__':
-    Instagram().ungrateful()

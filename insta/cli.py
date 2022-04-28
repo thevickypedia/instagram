@@ -146,9 +146,9 @@ def followers():
     client, insta_profile = InstagramCLI.login()
     for follower in insta_profile.get_followers():
         if username := follower.username:
-            click.secho(message=f'Username: {username}', fg='green')
+            click.secho(message=f'Username: {username}', fb='green')
         if bio := follower.biography:
-            click.secho(message=f'Bio: {bio}', fg='green')
+            click.secho(message=f'Bio: {bio}', fb='green')
 
 
 # noinspection PyUnresolvedReferences.
@@ -158,9 +158,9 @@ def followees():
     client, insta_profile = InstagramCLI.login()
     for followee in insta_profile.get_followees():
         if username := followee.username:
-            click.secho(message=f'Username: {username}', fg='green')
+            click.secho(message=f'Username: {username}', fb='green')
         if bio := followee.biography:
-            click.secho(message=f'Bio: {bio}', fg='green')
+            click.secho(message=f'Bio: {bio}', fb='green')
 
 
 @main.command()
@@ -180,11 +180,11 @@ def ungrateful(them: bool, me: bool):
 
         if them:
             ug_them = [followee for followee in followees_ if followee not in followers_]
-            click.secho(message=f'Ungrateful Them: {len(ug_them)}\n{sorted(ug_them)}', fg='green')
+            click.secho(message=f'Ungrateful Them: {len(ug_them)}\n{sorted(ug_them)}', fb='green')
 
         if me:
             ug_me = [follower for follower in followers_ if follower not in followees_]
-            click.secho(message=f'\n\nUngrateful Me: {len(ug_me)}\n{sorted(ug_me)}', fg='green')
+            click.secho(message=f'\n\nUngrateful Me: {len(ug_me)}\n{sorted(ug_me)}', fb='green')
 
 
 if __name__ == '__main__':
