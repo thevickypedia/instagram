@@ -1,10 +1,10 @@
 
 <!DOCTYPE html>
 
-<html>
+<html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
 
     <title>Instagram &#8212; instagram  documentation</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
@@ -13,6 +13,7 @@
     <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="_static/doctools.js"></script>
     
     <link rel="index" title="Index" href="genindex.html" />
@@ -42,10 +43,10 @@
           <div class="body" role="main">
             
   <section id="instagram">
-<h1>Instagram<a class="headerlink" href="#instagram" title="Permalink to this headline">¶</a></h1>
+<h1>Instagram<a class="headerlink" href="#instagram" title="Permalink to this heading">¶</a></h1>
 <p>Python script to retrieve data from Instagram</p>
 <section id="env-variables">
-<h2>Env Variables<a class="headerlink" href="#env-variables" title="Permalink to this headline">¶</a></h2>
+<h2>Env Variables<a class="headerlink" href="#env-variables" title="Permalink to this heading">¶</a></h2>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">export</span> <span class="n">insta_user</span><span class="o">=&lt;</span><span class="n">username</span><span class="o">&gt;</span>
 <span class="n">export</span> <span class="n">insta_pass</span><span class="o">=&lt;</span><span class="n">password</span><span class="o">&gt;</span>
 </pre></div>
@@ -53,35 +54,62 @@
 <p>Optionally environment variables can be loaded from a <code class="docutils literal notranslate"><span class="pre">.env</span></code> file using the python_dotenv module.</p>
 </section>
 <section id="setup">
-<h2>Setup<a class="headerlink" href="#setup" title="Permalink to this headline">¶</a></h2>
+<h2>Setup<a class="headerlink" href="#setup" title="Permalink to this heading">¶</a></h2>
 <p><code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">.</span></code> - This installs the <code class="docutils literal notranslate"><span class="pre">instagram</span></code> package along with its requirements to use the CLI commands.</p>
 </section>
 <section id="cli">
-<h2>CLI<a class="headerlink" href="#cli" title="Permalink to this headline">¶</a></h2>
-<p><code class="docutils literal notranslate"><span class="pre">insta</span> <span class="pre">--help</span></code> - Help information.</p>
-<p><code class="docutils literal notranslate"><span class="pre">insta</span> <span class="pre">dp</span> <span class="pre">--profile</span> <span class="pre">&lt;username&gt;</span></code>
-<br>
-<code class="docutils literal notranslate"><span class="pre">insta</span> <span class="pre">dp</span></code> - Prompts to provide username.</p>
-<p><code class="docutils literal notranslate"><span class="pre">insta</span> <span class="pre">followers</span></code> - Prints followers’ username and bio.</p>
-<p><code class="docutils literal notranslate"><span class="pre">insta</span> <span class="pre">followees</span></code> - Prints followees’ username and bio.</p>
-<p><code class="docutils literal notranslate"><span class="pre">insta</span> <span class="pre">ungrateful</span> <span class="pre">--them</span></code> - Prints you follow who don’t follow you back.
-<br>
-<code class="docutils literal notranslate"><span class="pre">insta</span> <span class="pre">ungrateful</span> <span class="pre">--me</span></code> - Prints followers who you don’t follow back.</p>
+<h2>CLI<a class="headerlink" href="#cli" title="Permalink to this heading">¶</a></h2>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">insta</span> <span class="pre">--help</span></code> - Help information.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">insta</span> <span class="pre">dp</span> <span class="pre">--profile</span> <span class="pre">&lt;username&gt;</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">insta</span> <span class="pre">dp</span></code> - Prompts to provide username.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">insta</span> <span class="pre">followers</span></code> - Prints followers’ username and bio.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">insta</span> <span class="pre">followees</span></code> - Prints followees’ username and bio.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">insta</span> <span class="pre">ungrateful</span> <span class="pre">--them</span></code> - Prints you follow who don’t follow you back.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">insta</span> <span class="pre">ungrateful</span> <span class="pre">--me</span></code> - Prints followers who you don’t follow back.</p></li>
+</ul>
 </section>
-<section id="commit">
-<h2>Commit<a class="headerlink" href="#commit" title="Permalink to this headline">¶</a></h2>
-<p><code class="docutils literal notranslate"><span class="pre">pip3</span> <span class="pre">install</span> <span class="pre">-r</span> <span class="pre">requirements.txt</span></code> - This installs <code class="docutils literal notranslate"><span class="pre">pre-commit</span></code> for linting and <code class="docutils literal notranslate"><span class="pre">sphinx</span></code> for auto-doc generation.</p>
-<p><strong>Linting:</strong></p>
-<p>PreCommit will ensure linting, and the doc creation are run on every commit.</p>
-<p><strong>Requirement:</strong></p>
-<p>pip install –no-cache –upgrade sphinx pre-commit recommonmark</p>
-<p><strong>Usage:</strong></p>
-<p>pre-commit run –all-files</p>
+<section id="coding-standards">
+<h2>Coding Standards<a class="headerlink" href="#coding-standards" title="Permalink to this heading">¶</a></h2>
+<p>Docstring format: <a class="reference external" href="https://google.github.io/styleguide/pyguide.html#38-comments-and-docstrings"><code class="docutils literal notranslate"><span class="pre">Google</span></code></a> <br>
+Styling conventions: <a class="reference external" href="https://www.python.org/dev/peps/pep-0008/"><code class="docutils literal notranslate"><span class="pre">PEP</span> <span class="pre">8</span></code></a> <br>
+Clean code with pre-commit hooks: <a class="reference external" href="https://flake8.pycqa.org/en/latest/"><code class="docutils literal notranslate"><span class="pre">flake8</span></code></a> and
+<a class="reference external" href="https://pycqa.github.io/isort/"><code class="docutils literal notranslate"><span class="pre">isort</span></code></a></p>
 </section>
-<section id="links">
-<h2>Links<a class="headerlink" href="#links" title="Permalink to this headline">¶</a></h2>
-<p><a class="reference external" href="https://github.com/thevickypedia/instagram">Repository</a></p>
-<p><a class="reference external" href="https://thevickypedia.github.io/instagram/">Runbook</a></p>
+<section id="release-notes">
+<h2><a class="reference external" href="https://github.com/thevickypedia/Jarvis_UI/blob/main/release_notes.rst">Release Notes</a><a class="headerlink" href="#release-notes" title="Permalink to this heading">¶</a></h2>
+<p><strong>Requirement</strong></p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>python<span class="w"> </span>-m<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>changelog-generator
+</pre></div>
+</div>
+<p><strong>Usage</strong></p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>changelog<span class="w"> </span>reverse<span class="w"> </span>-f<span class="w"> </span>release_notes.rst<span class="w"> </span>-t<span class="w"> </span><span class="s1">&#39;Release Notes&#39;</span>
+</pre></div>
+</div>
+</section>
+<section id="linting">
+<h2>Linting<a class="headerlink" href="#linting" title="Permalink to this heading">¶</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">PreCommit</span></code> will ensure linting, and the doc creation are run on every commit.</p>
+<p><strong>Requirement</strong>
+<br></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span>--no-cache<span class="w"> </span><span class="nv">sphinx</span><span class="o">==</span><span class="m">5</span>.1.1<span class="w"> </span>pre-commit<span class="w"> </span>recommonmark
+</pre></div>
+</div>
+<p><strong>Usage</strong>
+<br></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pre-commit<span class="w"> </span>run<span class="w"> </span>--all-files
+</pre></div>
+</div>
+</section>
+<section id="pypi-package">
+<h2>Pypi Package<a class="headerlink" href="#pypi-package" title="Permalink to this heading">¶</a></h2>
+<p><a class="reference external" href="https://packaging.python.org/tutorials/packaging-projects/"><img alt="pypi-module" src="https://img.shields.io/badge/Software%20Repository-pypi-1f425f.svg" /></a></p>
+<p><a class="reference external" href="https://pypi.org/project/instagram/">https://pypi.org/project/instagram/</a></p>
+</section>
+<section id="runbook">
+<h2>Runbook<a class="headerlink" href="#runbook" title="Permalink to this heading">¶</a></h2>
+<p><a class="reference external" href="https://www.sphinx-doc.org/en/master/man/sphinx-autogen.html"><img alt="made-with-sphinx-doc" src="https://img.shields.io/badge/Code%20Docs-Sphinx-1f425f.svg" /></a></p>
+<p><a class="reference external" href="https://thevickypedia.github.io/instagram/">https://thevickypedia.github.io/instagram/</a></p>
 </section>
 </section>
 
@@ -92,21 +120,28 @@
       </div>
       <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
-  <h3><a href="index.html">Table of Contents</a></h3>
-  <ul>
+  <div>
+    <h3><a href="index.html">Table of Contents</a></h3>
+    <ul>
 <li><a class="reference internal" href="#">Instagram</a><ul>
 <li><a class="reference internal" href="#env-variables">Env Variables</a></li>
 <li><a class="reference internal" href="#setup">Setup</a></li>
 <li><a class="reference internal" href="#cli">CLI</a></li>
-<li><a class="reference internal" href="#commit">Commit</a></li>
-<li><a class="reference internal" href="#links">Links</a></li>
+<li><a class="reference internal" href="#coding-standards">Coding Standards</a></li>
+<li><a class="reference internal" href="#release-notes">Release Notes</a></li>
+<li><a class="reference internal" href="#linting">Linting</a></li>
+<li><a class="reference internal" href="#pypi-package">Pypi Package</a></li>
+<li><a class="reference internal" href="#runbook">Runbook</a></li>
 </ul>
 </li>
 </ul>
 
-  <h4>Previous topic</h4>
-  <p class="topless"><a href="index.html"
-                        title="previous chapter">Welcome to Instagram Client’s documentation!</a></p>
+  </div>
+  <div>
+    <h4>Previous topic</h4>
+    <p class="topless"><a href="index.html"
+                          title="previous chapter">Welcome to Instagram Client’s documentation!</a></p>
+  </div>
   <div role="note" aria-label="source link">
     <h3>This Page</h3>
     <ul class="this-page-menu">
@@ -123,7 +158,7 @@
     </form>
     </div>
 </div>
-<script>$('#searchbox').show(0);</script>
+<script>document.getElementById('searchbox').style.display = "block"</script>
         </div>
       </div>
       <div class="clearer"></div>
@@ -146,7 +181,7 @@
     </div>
     <div class="footer" role="contentinfo">
         &#169; Copyright 2021, Vignesh Sivanandha Rao.
-      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.2.0.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.1.1.
     </div>
   </body>
 </html>

@@ -7,6 +7,8 @@ from typing import NoReturn
 import requests
 from instaloader import Instaloader, Profile
 
+from .config import env
+
 
 class Instagram:
     """Initiates IG client. Takes username and password as arguments for authentication.
@@ -18,10 +20,7 @@ class Instagram:
         insta_pass: Password for the authentication instagram account.
     """
 
-    def __init__(self, insta_user: str = os.environ.get('insta_user'), insta_pass: str = os.environ.get('insta_pass')):
-        if not (insta_user and insta_pass):
-            exit("Store your Instagram login credentials as env vars.\n"
-                 "insta_user=<username>\ninsta_pass=<password>")
+    def __init__(self, insta_user: str = env.insta_user, insta_pass: str = env.insta_pass):
         self.client = Instaloader()
         self.client.login(insta_user, insta_pass)
         self.profile = Profile.from_username(self.client.context, insta_user)

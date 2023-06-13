@@ -1,10 +1,10 @@
 
 <!DOCTYPE html>
 
-<html>
+<html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
 
     <title>Welcome to Instagram Client’s documentation! &#8212; instagram  documentation</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
@@ -13,6 +13,7 @@
     <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="_static/doctools.js"></script>
     
     <link rel="index" title="Index" href="genindex.html" />
@@ -42,7 +43,7 @@
           <div class="body" role="main">
             
   <section id="welcome-to-instagram-client-s-documentation">
-<h1>Welcome to Instagram Client’s documentation!<a class="headerlink" href="#welcome-to-instagram-client-s-documentation" title="Permalink to this headline">¶</a></h1>
+<h1>Welcome to Instagram Client’s documentation!<a class="headerlink" href="#welcome-to-instagram-client-s-documentation" title="Permalink to this heading">¶</a></h1>
 <div class="toctree-wrapper compound">
 <p class="caption" role="heading"><span class="caption-text">Read Me:</span></p>
 <ul>
@@ -50,134 +51,44 @@
 <li class="toctree-l2"><a class="reference internal" href="README.html#env-variables">Env Variables</a></li>
 <li class="toctree-l2"><a class="reference internal" href="README.html#setup">Setup</a></li>
 <li class="toctree-l2"><a class="reference internal" href="README.html#cli">CLI</a></li>
-<li class="toctree-l2"><a class="reference internal" href="README.html#commit">Commit</a></li>
-<li class="toctree-l2"><a class="reference internal" href="README.html#links">Links</a></li>
+<li class="toctree-l2"><a class="reference internal" href="README.html#coding-standards">Coding Standards</a></li>
+<li class="toctree-l2"><a class="reference internal" href="README.html#release-notes">Release Notes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="README.html#linting">Linting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="README.html#pypi-package">Pypi Package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="README.html#runbook">Runbook</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </section>
-<section id="module-cli">
-<span id="instagram-cli"></span><h1>Instagram CLI<a class="headerlink" href="#module-cli" title="Permalink to this headline">¶</a></h1>
-<dl class="py class">
-<dt class="sig sig-object py" id="cli.InstagramCLI">
-<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">cli.</span></span><span class="sig-name descname"><span class="pre">InstagramCLI</span></span><a class="headerlink" href="#cli.InstagramCLI" title="Permalink to this definition">¶</a></dt>
-<dd><p>Class for documentation.</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">InstagramCLI</span>
-</pre></div>
-</div>
-<dl class="py method">
-<dt class="sig sig-object py" id="cli.InstagramCLI.main">
-<span class="sig-name descname"><span class="pre">main</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#cli.InstagramCLI.main" title="Permalink to this definition">¶</a></dt>
-<dd><p class="rubric">References</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">main</span>
-</pre></div>
-</div>
-<p>Initiates IG client. Takes username and password as arguments for authentication.</p>
-<ul>
-<li><dl>
-<dt>Shows the help message:</dt><dd><p><code class="docutils literal notranslate"><span class="pre">Store</span> <span class="pre">your</span> <span class="pre">Instagram</span> <span class="pre">login</span> <span class="pre">credentials</span> <span class="pre">as</span> <span class="pre">env</span> <span class="pre">vars.</span></code></p>
-<p><code class="docutils literal notranslate"><span class="pre">export</span> <span class="pre">insta_user=&lt;username&gt;</span></code></p>
-<p><code class="docutils literal notranslate"><span class="pre">export</span> <span class="pre">insta_pass=&lt;password&gt;</span></code></p>
-</dd>
-</dl>
-</li>
-</ul>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="cli.InstagramCLI.dp">
-<span class="sig-name descname"><span class="pre">dp</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#cli.InstagramCLI.dp" title="Permalink to this definition">¶</a></dt>
-<dd><p class="rubric">References</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">dp</span>
-</pre></div>
-</div>
-<p>Gets display picture of a profile and saves it locally. Also asks for deletion post preview.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>- target_profile</strong> – User id of the profile for which the display picture has to be downloaded.</p>
-</dd>
-<dt class="field-even">Yields</dt>
-<dd class="field-even"><p>Profile picture of the targeted profile</p>
-</dd>
-</dl>
-<p class="rubric">Examples</p>
-<p><code class="docutils literal notranslate"><span class="pre">insta</span> <span class="pre">dp</span> <span class="pre">--profile</span> <span class="pre">vignesh.vikky</span></code></p>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="cli.InstagramCLI.followers">
-<span class="sig-name descname"><span class="pre">followers</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#cli.InstagramCLI.followers" title="Permalink to this definition">¶</a></dt>
-<dd><p class="rubric">References</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">followers</span>
-</pre></div>
-</div>
-<p>Prints followers’ username and bio.</p>
-<p class="rubric">Examples</p>
-<p><code class="docutils literal notranslate"><span class="pre">insta</span> <span class="pre">followers</span></code></p>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="cli.InstagramCLI.followees">
-<span class="sig-name descname"><span class="pre">followees</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#cli.InstagramCLI.followees" title="Permalink to this definition">¶</a></dt>
-<dd><p class="rubric">References</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">followees</span>
-</pre></div>
-</div>
-<p>Prints followees’ username and bio.</p>
-<p class="rubric">Examples</p>
-<p><code class="docutils literal notranslate"><span class="pre">insta</span> <span class="pre">followees</span></code></p>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="cli.InstagramCLI.ungrateful">
-<span class="sig-name descname"><span class="pre">ungrateful</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#cli.InstagramCLI.ungrateful" title="Permalink to this definition">¶</a></dt>
-<dd><p class="rubric">References</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">ungrateful</span>
-</pre></div>
-</div>
-<p>Prints who don’t follow you back and who you don’t follow back.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>- them</strong> – Takes boolean value to retrieve people who don’t follow you back.</p></li>
-<li><p><strong>- me</strong> – Takes boolean value to retrieve people who you don’t follow back.</p></li>
-</ul>
-</dd>
-</dl>
-<p class="rubric">Examples</p>
-<p><code class="docutils literal notranslate"><span class="pre">insta</span> <span class="pre">ungrateful</span> <span class="pre">--them</span></code></p>
-<p><code class="docutils literal notranslate"><span class="pre">insta</span> <span class="pre">ungrateful</span> <span class="pre">--me</span></code></p>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="cli.InstagramCLI.login">
-<em class="property"><span class="pre">static</span> </em><span class="sig-name descname"><span class="pre">login</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Tuple</span></span></span><a class="headerlink" href="#cli.InstagramCLI.login" title="Permalink to this definition">¶</a></dt>
+<section id="module-insta.cli">
+<span id="instagram-cli"></span><h1>Instagram CLI<a class="headerlink" href="#module-insta.cli" title="Permalink to this heading">¶</a></h1>
+<dl class="py function">
+<dt class="sig sig-object py" id="insta.cli.login">
+<span class="sig-prename descclassname"><span class="pre">insta.cli.</span></span><span class="sig-name descname"><span class="pre">login</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">Instaloader</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Profile</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#insta.cli.login" title="Permalink to this definition">¶</a></dt>
 <dd><p>Logs in to the instagram client using username and password stored as env vars.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
 <dd class="field-odd"><p>instagram module and profile information</p>
 </dd>
-<dt class="field-even">Return type</dt>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
 <dd class="field-even"><p>tuple</p>
 </dd>
 </dl>
 </dd></dl>
 
-</dd></dl>
-
 </section>
-<section id="module-ig_connector">
-<span id="instagram-connector"></span><h1>Instagram Connector<a class="headerlink" href="#module-ig_connector" title="Permalink to this headline">¶</a></h1>
+<section id="module-insta.ig_connector">
+<span id="instagram-connector"></span><h1>Instagram Connector<a class="headerlink" href="#module-insta.ig_connector" title="Permalink to this heading">¶</a></h1>
 <dl class="py class">
-<dt class="sig sig-object py" id="ig_connector.Instagram">
-<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">ig_connector.</span></span><span class="sig-name descname"><span class="pre">Instagram</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">insta_user</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">insta_pass</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ig_connector.Instagram" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="insta.ig_connector.Instagram">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">insta.ig_connector.</span></span><span class="sig-name descname"><span class="pre">Instagram</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">insta_user</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">insta_pass</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#insta.ig_connector.Instagram" title="Permalink to this definition">¶</a></dt>
 <dd><p>Initiates IG client. Takes username and password as arguments for authentication.</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">Instagram</span>
 </pre></div>
 </div>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>insta_user</strong> – Username for the authentication instagram account.</p></li>
 <li><p><strong>insta_pass</strong> – Password for the authentication instagram account.</p></li>
@@ -185,82 +96,82 @@
 </dd>
 </dl>
 <dl class="py method">
-<dt class="sig sig-object py" id="ig_connector.Instagram.dp">
-<span class="sig-name descname"><span class="pre">dp</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">target_profile</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">NoReturn</span></span></span><a class="headerlink" href="#ig_connector.Instagram.dp" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="insta.ig_connector.Instagram.dp">
+<span class="sig-name descname"><span class="pre">dp</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">target_profile</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">NoReturn</span></span></span><a class="headerlink" href="#insta.ig_connector.Instagram.dp" title="Permalink to this definition">¶</a></dt>
 <dd><p>Gets display picture of a profile and saves it locally. Also asks for deletion post preview.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>target_profile</strong> – User id of the profile for which the display picture has to be downloaded.</p>
 </dd>
 </dl>
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="ig_connector.Instagram.followees">
-<span class="sig-name descname"><span class="pre">followees</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">NoReturn</span></span></span><a class="headerlink" href="#ig_connector.Instagram.followees" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="insta.ig_connector.Instagram.followees">
+<span class="sig-name descname"><span class="pre">followees</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">NoReturn</span></span></span><a class="headerlink" href="#insta.ig_connector.Instagram.followees" title="Permalink to this definition">¶</a></dt>
 <dd><p>Prints followees’ username and bio.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="ig_connector.Instagram.followers">
-<span class="sig-name descname"><span class="pre">followers</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">NoReturn</span></span></span><a class="headerlink" href="#ig_connector.Instagram.followers" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="insta.ig_connector.Instagram.followers">
+<span class="sig-name descname"><span class="pre">followers</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">NoReturn</span></span></span><a class="headerlink" href="#insta.ig_connector.Instagram.followers" title="Permalink to this definition">¶</a></dt>
 <dd><p>Prints followers’ username and bio.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="ig_connector.Instagram.followers_thread">
-<em class="property"><span class="pre">static</span> </em><span class="sig-name descname"><span class="pre">followers_thread</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">follower</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">instaloader.structures.Profile</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">NoReturn</span></span></span><a class="headerlink" href="#ig_connector.Instagram.followers_thread" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="insta.ig_connector.Instagram.followers_thread">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">followers_thread</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">follower</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Profile</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">NoReturn</span></span></span><a class="headerlink" href="#insta.ig_connector.Instagram.followers_thread" title="Permalink to this definition">¶</a></dt>
 <dd><p>Takes follower’s profile data as input and prints their username and bio.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>follower</strong> – Takes follower profile data as argument.</p>
 </dd>
 </dl>
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="ig_connector.Instagram.followers_threaded">
-<span class="sig-name descname"><span class="pre">followers_threaded</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">NoReturn</span></span></span><a class="headerlink" href="#ig_connector.Instagram.followers_threaded" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="insta.ig_connector.Instagram.followers_threaded">
+<span class="sig-name descname"><span class="pre">followers_threaded</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">NoReturn</span></span></span><a class="headerlink" href="#insta.ig_connector.Instagram.followers_threaded" title="Permalink to this definition">¶</a></dt>
 <dd><p>Get followers’ information concurrently.</p>
 <p>Initiates Instagram().followers_thread() in a multi-threaded execution.
 Set max_workers to 5 as anything exceeding 10 will block the origin IP range for 10 minutes.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="ig_connector.Instagram.following_thread">
-<em class="property"><span class="pre">static</span> </em><span class="sig-name descname"><span class="pre">following_thread</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">followee</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">instaloader.structures.Profile</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">NoReturn</span></span></span><a class="headerlink" href="#ig_connector.Instagram.following_thread" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="insta.ig_connector.Instagram.following_thread">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">following_thread</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">followee</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Profile</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">NoReturn</span></span></span><a class="headerlink" href="#insta.ig_connector.Instagram.following_thread" title="Permalink to this definition">¶</a></dt>
 <dd><p>Takes following people’s profile data as input and prints their username and bio.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>followee</strong> – Take followee profile data as argument.</p>
 </dd>
 </dl>
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="ig_connector.Instagram.following_threaded">
-<span class="sig-name descname"><span class="pre">following_threaded</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">NoReturn</span></span></span><a class="headerlink" href="#ig_connector.Instagram.following_threaded" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="insta.ig_connector.Instagram.following_threaded">
+<span class="sig-name descname"><span class="pre">following_threaded</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">NoReturn</span></span></span><a class="headerlink" href="#insta.ig_connector.Instagram.following_threaded" title="Permalink to this definition">¶</a></dt>
 <dd><p>Get followees’ information concurrently.</p>
 <p>Initiates Instagram().following_thread() in a multi-threaded execution.
 Set max_workers to 5 as anything exceeding 10 will block the origin IP range for 10 minutes.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="ig_connector.Instagram.post_info">
-<span class="sig-name descname"><span class="pre">post_info</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">tagged</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">bool</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">NoReturn</span></span></span><a class="headerlink" href="#ig_connector.Instagram.post_info" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="insta.ig_connector.Instagram.post_info">
+<span class="sig-name descname"><span class="pre">post_info</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">tagged</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">NoReturn</span></span></span><a class="headerlink" href="#insta.ig_connector.Instagram.post_info" title="Permalink to this definition">¶</a></dt>
 <dd><p>Prints information of posts.</p>
 <p>Gets tagged posts’ information when ‘tagged’ is set to True
 Gets self post information when ‘tagged’ flag is not used</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>tagged</strong> – Takes boolean value as argument. Set to False by default.</p>
 </dd>
 </dl>
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="ig_connector.Instagram.ungrateful">
-<span class="sig-name descname"><span class="pre">ungrateful</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">NoReturn</span></span></span><a class="headerlink" href="#ig_connector.Instagram.ungrateful" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="insta.ig_connector.Instagram.ungrateful">
+<span class="sig-name descname"><span class="pre">ungrateful</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">NoReturn</span></span></span><a class="headerlink" href="#insta.ig_connector.Instagram.ungrateful" title="Permalink to this definition">¶</a></dt>
 <dd><p>Prints who doesn’t follow you back and who you don’t follow back.</p>
 </dd></dl>
 
@@ -268,7 +179,7 @@ Gets self post information when ‘tagged’ flag is not used</p>
 
 </section>
 <section id="indices-and-tables">
-<h1>Indices and tables<a class="headerlink" href="#indices-and-tables" title="Permalink to this headline">¶</a></h1>
+<h1>Indices and tables<a class="headerlink" href="#indices-and-tables" title="Permalink to this heading">¶</a></h1>
 <ul class="simple">
 <li><p><a class="reference internal" href="genindex.html"><span class="std std-ref">Index</span></a></p></li>
 <li><p><a class="reference internal" href="py-modindex.html"><span class="std std-ref">Module Index</span></a></p></li>
@@ -283,17 +194,21 @@ Gets self post information when ‘tagged’ flag is not used</p>
       </div>
       <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
-  <h3><a href="#">Table of Contents</a></h3>
-  <ul>
+  <div>
+    <h3><a href="#">Table of Contents</a></h3>
+    <ul>
 <li><a class="reference internal" href="#">Welcome to Instagram Client’s documentation!</a></li>
-<li><a class="reference internal" href="#module-cli">Instagram CLI</a></li>
-<li><a class="reference internal" href="#module-ig_connector">Instagram Connector</a></li>
+<li><a class="reference internal" href="#module-insta.cli">Instagram CLI</a></li>
+<li><a class="reference internal" href="#module-insta.ig_connector">Instagram Connector</a></li>
 <li><a class="reference internal" href="#indices-and-tables">Indices and tables</a></li>
 </ul>
 
-  <h4>Next topic</h4>
-  <p class="topless"><a href="README.html"
-                        title="next chapter">Instagram</a></p>
+  </div>
+  <div>
+    <h4>Next topic</h4>
+    <p class="topless"><a href="README.html"
+                          title="next chapter">Instagram</a></p>
+  </div>
   <div role="note" aria-label="source link">
     <h3>This Page</h3>
     <ul class="this-page-menu">
@@ -310,7 +225,7 @@ Gets self post information when ‘tagged’ flag is not used</p>
     </form>
     </div>
 </div>
-<script>$('#searchbox').show(0);</script>
+<script>document.getElementById('searchbox').style.display = "block"</script>
         </div>
       </div>
       <div class="clearer"></div>
@@ -333,7 +248,7 @@ Gets self post information when ‘tagged’ flag is not used</p>
     </div>
     <div class="footer" role="contentinfo">
         &#169; Copyright 2021, Vignesh Sivanandha Rao.
-      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.2.0.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.1.1.
     </div>
   </body>
 </html>

@@ -15,14 +15,14 @@ Welcome to Instagram Client's documentation!
 Instagram CLI
 =============
 
-.. automodule:: cli
+.. automodule:: insta.cli
    :members:
    :undoc-members:
 
 Instagram Connector
 ===================
 
-.. automodule:: ig_connector
+.. automodule:: insta.ig_connector
    :members:
    :undoc-members:
 

@@ -5,98 +5,22 @@ from typing import NoReturn, Tuple
 
 import click
 import requests
-from dotenv import load_dotenv
 from instaloader import Instaloader, Profile, exceptions
 
-if os.path.isfile('.env'):
-    load_dotenv(dotenv_path='.env', verbose=True, override=True)
+from .config import env
 
 
-class InstagramCLI:
-    """Class for documentation.
+def login() -> Tuple[Instaloader, Profile]:
+    """Logs in to the instagram client using username and password stored as env vars.
 
-    >>> InstagramCLI
-
-    Methods:
-        main
-            References:
-                >>> main
-
-            Initiates IG client. Takes username and password as arguments for authentication.
-
-            - Shows the help message:
-                ``Store your Instagram login credentials as env vars.``
-
-                ``export insta_user=<username>``
-
-                ``export insta_pass=<password>``
-
-        dp
-            References:
-                >>> dp
-
-            Gets display picture of a profile and saves it locally. Also asks for deletion post preview.
-
-            Args:
-                - target_profile: User id of the profile for which the display picture has to be downloaded.
-
-            Yields:
-                Profile picture of the targeted profile
-
-            Examples:
-                ``insta dp --profile vignesh.vikky``
-
-        followers
-            References:
-                >>> followers
-
-            Prints followers' username and bio.
-
-            Examples:
-                ``insta followers``
-
-        followees
-            References:
-                >>> followees
-
-            Prints followees' username and bio.
-
-            Examples:
-                ``insta followees``
-
-        ungrateful
-            References:
-                >>> ungrateful
-
-            Prints who don't follow you back and who you don't follow back.
-
-            Args:
-                - them: Takes boolean value to retrieve people who don't follow you back.
-                - me: Takes boolean value to retrieve people who you don't follow back.
-
-            Examples:
-                ``insta ungrateful --them``
-
-                ``insta ungrateful --me``
-
+    Returns:
+        tuple:
+        instagram module and profile information
     """
-
-    @staticmethod
-    def login() -> Tuple:
-        """Logs in to the instagram client using username and password stored as env vars.
-
-        Returns:
-            tuple:
-            instagram module and profile information
-        """
-        if (insta_user := os.environ.get('insta_user')) and (insta_pass := os.environ.get('insta_pass')):
-            client = Instaloader()
-            client.login(user=insta_user, passwd=insta_pass)
-            insta_profile = Profile.from_username(client.context, insta_user)
-            return client, insta_profile
-        else:
-            exit("Store your Instagram login credentials as env vars.\n"
-                 "export insta_user=<username>\nexport insta_pass=<password>")
+    client = Instaloader()
+    client.login(user=env.insta_user, passwd=env.insta_pass)
+    insta_profile = Profile.from_username(context=client.context, username=env.insta_user)
+    return client, insta_profile
 
 
 @click.group()
@@ -122,11 +46,14 @@ def dp(profile: str) -> NoReturn:
         profile: User id of the profile for which the display picture has to be downloaded.
     """
     try:
-        client, insta_profile = InstagramCLI.login()
+        client, insta_profile = login()
     except exceptions.BadCredentialsException:
         click.secho(message='Credentials are invalid.', bold=True, fg='red')
         return
-    profile_ = Profile.from_username(client.context, profile)  # use target user here to download the dp
+    except exceptions.InstaloaderException as error:
+        click.secho(message=error.__str__(), bold=True, fg='red')
+        return
+    profile_ = Profile.from_username(context=client.context, username=profile)  # use target user to download the dp
     filename = f'{profile}.jpg'
     response = requests.get(profile_.get_profile_pic_url(), stream=True)
     response.raw.decode_content = True
@@ -143,7 +70,14 @@ def dp(profile: str) -> NoReturn:
 @main.command()
 def followers():
     """Prints followers' username and bio."""
-    client, insta_profile = InstagramCLI.login()
+    try:
+        client, insta_profile = login()
+    except exceptions.BadCredentialsException:
+        click.secho(message='Credentials are invalid.', bold=True, fg='red')
+        return
+    except exceptions.InstaloaderException as error:
+        click.secho(message=error.__str__(), bold=True, fg='red')
+        return
     for follower in insta_profile.get_followers():
         if username := follower.username:
             click.secho(message=f'Username: {username}', fb='green')
@@ -155,7 +89,14 @@ def followers():
 @main.command()
 def followees():
     """Prints followees' username and bio."""
-    client, insta_profile = InstagramCLI.login()
+    try:
+        client, insta_profile = login()
+    except exceptions.BadCredentialsException:
+        click.secho(message='Credentials are invalid.', bold=True, fg='red')
+        return
+    except exceptions.InstaloaderException as error:
+        click.secho(message=error.__str__(), bold=True, fg='red')
+        return
     for followee in insta_profile.get_followees():
         if username := followee.username:
             click.secho(message=f'Username: {username}', fb='green')
@@ -173,7 +114,14 @@ def ungrateful(them: bool, me: bool):
         them: Takes boolean value to retrieve people who don't follow you back.
         me: Takes boolean value to retrieve people who you don't follow back.
     """
-    client, insta_profile = InstagramCLI.login()
+    try:
+        client, insta_profile = login()
+    except exceptions.BadCredentialsException:
+        click.secho(message='Credentials are invalid.', bold=True, fg='red')
+        return
+    except exceptions.InstaloaderException as error:
+        click.secho(message=error.__str__(), bold=True, fg='red')
+        return
     if them or me:
         followers_ = [follower.username for follower in insta_profile.get_followers()]
         followees_ = [followee.username for followee in insta_profile.get_followees()]
