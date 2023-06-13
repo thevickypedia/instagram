@@ -52,11 +52,6 @@ pip install --no-cache sphinx==5.1.1 pre-commit recommonmark
 pre-commit run --all-files
 ```
 
-### Pypi Package
-[![pypi-module](https://img.shields.io/badge/Software%20Repository-pypi-1f425f.svg)](https://packaging.python.org/tutorials/packaging-projects/)
-
-[https://pypi.org/project/instagram/](https://pypi.org/project/instagram/)
-
 ### Runbook
 [![made-with-sphinx-doc](https://img.shields.io/badge/Code%20Docs-Sphinx-1f425f.svg)](https://www.sphinx-doc.org/en/master/man/sphinx-autogen.html)
 

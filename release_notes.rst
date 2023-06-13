@@ -1,6 +1,10 @@
 Release Notes
 =============
 
+0.3.9 (06/13/2023)
+------------------
+- Update README.md
+
 0.3.8 (06/13/2023)
 ------------------
 - Remove redundancies and cleanup code
